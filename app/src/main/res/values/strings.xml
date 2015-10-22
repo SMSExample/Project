@@ -1,7 +1,3 @@
 <resources>
     <string name="app_name">SMSClassProject</string>
-    <string name="title_activity_drafts">DraftsActivity</string>
-
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
 </resources>
