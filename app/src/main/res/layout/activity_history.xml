@@ -24,12 +24,64 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/scrollView"
-        android:layout_below="@+id/searchButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"/>
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="300dp"
+            android:layout_below="@id/searchButton">
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
+                    android:text="One" android:id="@+id/Button1" android:textSize="30dp" android:textStyle="bold">
+                </Button>
+
+                <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
+                    android:text="two" android:id="@+id/Button2" android:textSize="30dp" android:textStyle="bold">
+                </Button>
+
+                <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
+                    android:text="three" android:id="@+id/Button3" android:textSize="30dp" android:textStyle="bold">
+                </Button>
+
+                <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
+                    android:text="four" android:id="@+id/Button4" android:textSize="30dp" android:textStyle="bold">
+                </Button>
+
+
+                <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
+                    android:text="five" android:id="@+id/Button5" android:textSize="30dp" android:textStyle="bold">
+                </Button>
+
+                <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
+                    android:text="six" android:id="@+id/Button6" android:textSize="30dp" android:textStyle="bold">
+                </Button>
+
+                <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
+                    android:text="seven" android:id="@+id/Button7" android:textSize="30dp" android:textStyle="bold">
+                </Button>
+
+                <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
+                    android:text="eight" android:id="@+id/Button8" android:textSize="30dp" android:textStyle="bold">
+                </Button>
+
+                <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
+                    android:text="nine" android:id="@+id/Button9" android:textSize="30dp" android:textStyle="bold">
+                </Button>
+
+                <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
+                    android:text="ten" android:id="@+id/Button10" android:textSize="30dp" android:textStyle="bold">
+                </Button>
+            </LinearLayout>
+        </ScrollView>
+
+    <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true" android:text="next" android:id="@+id/next" android:textSize="25dp" android:textStyle="bold">
+    </Button>
+
+    <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true"
+         android:text="previous" android:id="@+id/pre" android:textSize="25dp" android:textStyle="bold">
+    </Button>
+
 </RelativeLayout>
