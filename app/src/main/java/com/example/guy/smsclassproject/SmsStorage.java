@@ -6,7 +6,7 @@ import java.util.ArrayList;
  */
 public class SmsStorage
 {
-    static Database smsData;
+    private static Database smsData;
 
     public SmsStorage()
     {

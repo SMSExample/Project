@@ -10,7 +10,9 @@ public class MessageObject
     private boolean sentSMS;
     public MessageObject(String message, String number, boolean sentByUser)
     {
-
+        smsMessage = message;
+        num = number;
+        sentSMS = sentByUser;
     }
     public String getSmsMessage()
     {
