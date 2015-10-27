@@ -8,6 +8,7 @@ public class MessageObject
     private String smsMessage;
     private String num;
     private boolean sentSMS;
+    public MessageObject(){};
     public MessageObject(String message, String number, boolean sentByUser)
     {
         smsMessage = message;
