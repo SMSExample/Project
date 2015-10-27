@@ -4,12 +4,14 @@ import android.os.Message;
 import com.example.guy.smsclassproject.MessageObject;
 
 import java.util.ArrayList;
-import java.util.Map;
+import java.util.HashMap;
 public class Database
 {
-    Map<String,ArrayList<MessageObject>> messages;
+    private HashMap<String,ArrayList<MessageObject>> messages;
     public Database()
-    {}
+    {
+        messages = new HashMap<>();
+    }
     public void addMessage(MessageObject mO)
     {
         String num = mO.getNumber();
