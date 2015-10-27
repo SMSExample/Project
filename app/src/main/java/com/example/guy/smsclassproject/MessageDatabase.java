@@ -4,11 +4,11 @@ import java.util.ArrayList;
 /**
  * Created by Guy on 10/27/2015.
  */
-public class SmsStorage
+public class MessageDatabase
 {
     private static Database smsData;
 
-    public SmsStorage()
+    public MessageDatabase()
     {
         if(smsData==null)
             smsData = new Database();
