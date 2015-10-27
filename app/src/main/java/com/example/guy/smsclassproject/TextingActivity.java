@@ -12,7 +12,7 @@ public class TextingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_texting);
+        setContentView(R.layout.activity_texting);
 
 
 

@@ -14,7 +14,8 @@
         android:id="@+id/goToTextHistory"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="201dp" />
+        android:layout_marginTop="201dp"
+        android:onClick="goToTextHistory"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -25,5 +26,6 @@
         android:layout_alignLeft="@+id/goToTextHistory"
         android:layout_alignStart="@+id/goToTextHistory"
         android:layout_alignRight="@+id/goToTextHistory"
-        android:layout_alignEnd="@+id/goToTextHistory" />
+        android:layout_alignEnd="@+id/goToTextHistory"
+        android:onClick="goToDrafts"/>
 </RelativeLayout>
