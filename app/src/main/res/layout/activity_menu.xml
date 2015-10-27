@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp"
+    tools:context="com.example.guy.smsclassproject.MenuActivity">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recent Texts"
+        android:id="@+id/goToTextHistory"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="201dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Drafts"
+        android:id="@+id/goToDrafts"
+        android:layout_below="@+id/goToTextHistory"
+        android:layout_alignLeft="@+id/goToTextHistory"
+        android:layout_alignStart="@+id/goToTextHistory"
+        android:layout_alignRight="@+id/goToTextHistory"
+        android:layout_alignEnd="@+id/goToTextHistory" />
+</RelativeLayout>
