@@ -15,7 +15,9 @@ public class MenuActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+        //The button is retrieved from the layout.
         toDrafts = (Button) findViewById(R.id.goToDrafts);
+        //A listener is added to the button.
         toDrafts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
@@ -33,6 +35,7 @@ public class MenuActivity extends Activity {
     }
     //called when user touch the button, learned from http://developer.android.com/guide/topics/ui/controls/button.html
     public void goToDrafts( ){
+        //This one line will take the user from the MenuActivity to the Drafts activity.
         startActivity(new Intent(MenuActivity.this, DraftsActivity.class));
     }
 
