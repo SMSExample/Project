@@ -16,7 +16,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 
 public class TextingActivity extends AppCompatActivity {
@@ -30,7 +29,7 @@ public class TextingActivity extends AppCompatActivity {
     int page;
     ArrayList<MessageObject> messagesFromReceiver;
     IntentFilter intentFilter;
-
+    private static final String TAG = MenuActivity.class.getSimpleName();//DELETE!!!!!!!!!!!!!!!!!!
     private BroadcastReceiver intentReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent)
@@ -47,9 +46,10 @@ public class TextingActivity extends AppCompatActivity {
         }
     };
     protected void onCreate(Bundle savedInstanceState) {
-        System.out.print("ERROR");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_texting);
+        intentFilter = new IntentFilter();
+        intentFilter.addAction("SMS_RECEIVED_ACTION");
         messageDatabase = new MessageDatabase();
         sendButton = (Button)findViewById(R.id.sendButton);
         numberText = (EditText)findViewById(R.id.numberText);

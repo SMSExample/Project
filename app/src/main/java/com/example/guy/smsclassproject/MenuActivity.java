@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
 public class MenuActivity extends Activity {
 
     private Button toDrafts;
@@ -36,6 +35,7 @@ public class MenuActivity extends Activity {
         toTexting.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)
             {
+
                 goToTexting();
             }
         });
@@ -51,7 +51,6 @@ public class MenuActivity extends Activity {
         startActivity(new Intent(MenuActivity.this, HistoryActivity.class));
     }
     public void goToTexting(){
-        System.out.print("ERROR");
         startActivity(new Intent(MenuActivity.this, TextingActivity.class));
     }
 }

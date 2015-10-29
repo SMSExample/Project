@@ -28,7 +28,8 @@
         </activity>
 
         <!-- Texts-->
-        <activity android:name=".TextingActivity" >
+        <activity android:name=".TextingActivity"
+            android:windowSoftInputMode="adjustPan"> <!-- stops keyboard from messing up layout -->
         </activity>
         <receiver android:name = ".SmsReceiver">
             <intent-filter>
