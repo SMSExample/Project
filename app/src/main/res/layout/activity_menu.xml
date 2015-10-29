@@ -12,20 +12,25 @@
         android:layout_height="wrap_content"
         android:text="Recent Texts"
         android:id="@+id/goToTextHistory"
+        android:layout_marginTop="141dp"
+        android:onClick="goToTextHistory"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="201dp"
-        android:onClick="goToTextHistory"/>
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Drafts"
         android:id="@+id/goToDrafts"
+        android:onClick="goToDrafts"
+        android:layout_below="@+id/textButton"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send A Text"
+        android:id="@+id/textButton"
         android:layout_below="@+id/goToTextHistory"
-        android:layout_alignLeft="@+id/goToTextHistory"
-        android:layout_alignStart="@+id/goToTextHistory"
-        android:layout_alignRight="@+id/goToTextHistory"
-        android:layout_alignEnd="@+id/goToTextHistory"
-        android:onClick="goToDrafts"/>
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
