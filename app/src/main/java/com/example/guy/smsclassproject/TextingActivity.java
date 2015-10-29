@@ -30,6 +30,7 @@ public class TextingActivity extends AppCompatActivity {
     int page;
     ArrayList<MessageObject> messagesFromReceiver;
     IntentFilter intentFilter;
+
     private BroadcastReceiver intentReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent)
@@ -37,8 +38,8 @@ public class TextingActivity extends AppCompatActivity {
             String textMessage = intent.getExtras().getString("sms");
             String message = textMessage.substring(textMessage.indexOf(':')+2);
             String number = textMessage.substring(0, textMessage.indexOf(':'));
-            messageDatabase.addMessage(new MessageObject(message, number,false));
-            initializeMessageButtons();
+            messageDatabase.addMessage(new MessageObject(message, number, false));
+
             if(number.equals(currentNumber))
             {
                 redisplayTexts();
@@ -46,13 +47,14 @@ public class TextingActivity extends AppCompatActivity {
         }
     };
     protected void onCreate(Bundle savedInstanceState) {
+        System.out.print("ERROR");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_texting);
         messageDatabase = new MessageDatabase();
         sendButton = (Button)findViewById(R.id.sendButton);
         numberText = (EditText)findViewById(R.id.numberText);
         messageText = (EditText) findViewById(R.id.messageText);
-
+        initializeMessageButtons();
         sendButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 sendMessage();

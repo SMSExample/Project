@@ -5,7 +5,8 @@
     android:paddingRight="16dp"
     android:paddingTop="16dp"
     android:paddingBottom="16dp"
-    tools:context="com.example.guy.smsclassproject.MenuActivity">
+    tools:context="com.example.guy.smsclassproject.MenuActivity"
+    android:background="@android:color/white"> <!--Changes background color of app-->>
 
     <Button
         android:layout_width="wrap_content"
