@@ -63,62 +63,71 @@
                 android:id="@+id/textButton1"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
-                android:text="test\ntest"/>
+                android:text=""/>
 
             <Button
                 android:layout_width="fill_parent"
                 android:layout_height="120dp"
                 android:id="@+id/textButton2"
                 android:layout_below="@+id/textButton1"
-                android:layout_alignParentLeft="true"/>
+                android:layout_alignParentLeft="true"
+                android:text=""/>
             <Button
                 android:layout_width="fill_parent"
                 android:layout_height="120dp"
                 android:id="@+id/textButton3"
                 android:layout_below="@+id/textButton2"
-                android:layout_alignParentLeft="true"/>
+                android:layout_alignParentLeft="true"
+                android:text=""/>
             <Button
                 android:layout_width="fill_parent"
                 android:layout_height="120dp"
                 android:id="@+id/textButton4"
                 android:layout_below="@+id/textButton3"
-                android:layout_alignParentLeft="true"/>
+                android:layout_alignParentLeft="true"
+                android:text=""/>
             <Button
                 android:layout_width="fill_parent"
                 android:layout_height="120dp"
                 android:id="@+id/textButton5"
                 android:layout_below="@+id/textButton4"
-                android:layout_alignParentLeft="true"/>
+                android:layout_alignParentLeft="true"
+                android:text=""/>
             <Button
                 android:layout_width="fill_parent"
                 android:layout_height="120dp"
                 android:id="@+id/textButton6"
                 android:layout_below="@+id/textButton5"
-                android:layout_alignParentLeft="true"/>
+                android:layout_alignParentLeft="true"
+                android:text=""/>
             <Button
                 android:layout_width="fill_parent"
                 android:layout_height="120dp"
                 android:id="@+id/textButton7"
                 android:layout_below="@+id/textButton6"
-                android:layout_alignParentLeft="true"/>
+                android:layout_alignParentLeft="true"
+                android:text=""/>
             <Button
                 android:layout_width="fill_parent"
                 android:layout_height="120dp"
                 android:id="@+id/textButton8"
                 android:layout_below="@+id/textButton7"
-                android:layout_alignParentLeft="true"/>
+                android:layout_alignParentLeft="true"
+                android:text=""/>
             <Button
                 android:layout_width="fill_parent"
                 android:layout_height="120dp"
                 android:id="@+id/textButton9"
                 android:layout_below="@+id/textButton8"
-                android:layout_alignParentLeft="true"/>
+                android:layout_alignParentLeft="true"
+                android:text=""/>
             <Button
                 android:layout_width="fill_parent"
                 android:layout_height="120dp"
                 android:id="@+id/textButton10"
                 android:layout_below="@+id/textButton9"
-                android:layout_alignParentLeft="true"/>
+                android:layout_alignParentLeft="true"
+                android:text=""/>
 
         </LinearLayout>
     </ScrollView>

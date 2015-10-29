@@ -24,11 +24,12 @@ public class TextingActivity extends AppCompatActivity {
     MessageDatabase messageDatabase;
     EditText numberText;
     EditText messageText;
-    String currentNumber;
+    static String currentNumber;
     Button[] messageButtons;
     int page;
     ArrayList<MessageObject> messagesFromReceiver;
     IntentFilter intentFilter;
+    boolean wasCreated;
     private BroadcastReceiver intentReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent)
@@ -58,8 +59,9 @@ public class TextingActivity extends AppCompatActivity {
             public void onClick(View v) {
                 sendMessage();
             }
-        });
 
+        });
+        wasCreated = true;
 
 
     }
@@ -150,20 +152,25 @@ public class TextingActivity extends AppCompatActivity {
     private void initializeMessageButtons()
     {
         messageButtons = new Button[10];
-        messageButtons[0] = (Button)findViewById(R.id.Button1);
-        messageButtons[1] = (Button)findViewById(R.id.Button2);
-        messageButtons[2] = (Button)findViewById(R.id.Button3);
-        messageButtons[3] = (Button)findViewById(R.id.Button4);
-        messageButtons[4] = (Button)findViewById(R.id.Button5);
-        messageButtons[5] = (Button)findViewById(R.id.Button6);
-        messageButtons[6] = (Button)findViewById(R.id.Button7);
-        messageButtons[7] = (Button)findViewById(R.id.Button8);
-        messageButtons[8] = (Button)findViewById(R.id.Button9);
-        messageButtons[9] = (Button)findViewById(R.id.Button10);
+        messageButtons[0] = (Button)findViewById(R.id.textButton1);
+        messageButtons[1] = (Button)findViewById(R.id.textButton2);
+        messageButtons[2] = (Button)findViewById(R.id.textButton3);
+        messageButtons[3] = (Button)findViewById(R.id.textButton4);
+        messageButtons[4] = (Button)findViewById(R.id.textButton5);
+        messageButtons[5] = (Button)findViewById(R.id.textButton6);
+        messageButtons[6] = (Button)findViewById(R.id.textButton7);
+        messageButtons[7] = (Button)findViewById(R.id.textButton8);
+        messageButtons[8] = (Button)findViewById(R.id.textButton9);
+        messageButtons[9] = (Button)findViewById(R.id.textButton10);
     }
     protected void onResume()
     {
+        if(currentNumber!=null) {
+            redisplayTexts();
+            numberText.setText(currentNumber);
+        }
         registerReceiver(intentReceiver,intentFilter);
+
         super.onResume();
     }
     protected void onPause()
