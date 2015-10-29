@@ -29,7 +29,6 @@ public class TextingActivity extends AppCompatActivity {
     int page;
     ArrayList<MessageObject> messagesFromReceiver;
     IntentFilter intentFilter;
-    private static final String TAG = MenuActivity.class.getSimpleName();//DELETE!!!!!!!!!!!!!!!!!!
     private BroadcastReceiver intentReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent)
