@@ -53,6 +53,8 @@ public class TextingActivity extends AppCompatActivity {
         }
         private boolean isSameNumber()
         {
+            if(currentNumber==null)
+                return false;
             String shortenedVersion = number.substring(number.length()-currentNumber.length());
             return shortenedVersion.equals(currentNumber);
         }
