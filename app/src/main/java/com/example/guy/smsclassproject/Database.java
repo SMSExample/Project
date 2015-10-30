@@ -60,23 +60,21 @@ public class Database
     {
         return messages.get(number);
     }
-    public ArrayList<MessageObject> GetExistingNumber(String num)
+    public ArrayList<MessageObject> GetExistingNumber(String newNum)
     {
         for(String oldNum : messages.keySet())
         {
-            int oldNumInt = Integer.parseInt(oldNum);
-            int newNumInt = Integer.parseInt(num);
-            int shortestNumber = Math.min(oldNumInt,newNumInt);
-            if(shortestNumber==newNumInt)
+            if(newNum.length()<oldNum.length())
             {
-                int divider = (int)Math.pow(10,num.length());
-                if(oldNumInt%divider==newNumInt)
+
+                String shortenedVersion = oldNum.substring(oldNum.length()-newNum.length());
+                if(shortenedVersion.equals(newNum))
                     return messages.get(oldNum);
             }
             else
             {
-                int divider = (int)Math.pow(10,oldNum.length());
-                if(newNumInt%divider==oldNumInt)
+                String shortenedVersion = newNum.substring(newNum.length()-oldNum.length());
+                if(shortenedVersion.equals(oldNum))
                     return messages.get(oldNum);
             }
         }
