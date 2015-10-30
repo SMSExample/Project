@@ -17,7 +17,7 @@ public class Database
         String num = mO.getNumber();
         if(!messages.containsKey(num))
         {
-            messages.put(num, new ArrayList<MessageObject>());
+            messages.put(num,this.GetExistingNumber(num));
         }
             messages.get(num).add(mO);
     }
@@ -59,6 +59,28 @@ public class Database
     public ArrayList<MessageObject> getMessagesByNumber(String number)
     {
         return messages.get(number);
+    }
+    public ArrayList<MessageObject> GetExistingNumber(String num)
+    {
+        for(String oldNum : messages.keySet())
+        {
+            int oldNumInt = Integer.parseInt(oldNum);
+            int newNumInt = Integer.parseInt(num);
+            int shortestNumber = Math.min(oldNumInt,newNumInt);
+            if(shortestNumber==newNumInt)
+            {
+                int divider = (int)Math.pow(10,num.length());
+                if(oldNumInt%divider==newNumInt)
+                    return messages.get(oldNum);
+            }
+            else
+            {
+                int divider = (int)Math.pow(10,oldNum.length());
+                if(newNumInt%divider==oldNumInt)
+                    return messages.get(oldNum);
+            }
+        }
+        return new ArrayList<MessageObject>();
     }
 
 }

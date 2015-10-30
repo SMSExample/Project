@@ -40,18 +40,21 @@ public class TextingActivity extends AppCompatActivity {
     boolean wasCreated;
 
     private BroadcastReceiver intentReceiver = new BroadcastReceiver() {
-        @Override
+        String number;
         public void onReceive(Context context, Intent intent)
         {
             String textMessage = intent.getExtras().getString("sms");
             String message = textMessage.substring(textMessage.indexOf(':')+2);
-            String number = textMessage.substring(0, textMessage.indexOf(':'));
+            number = textMessage.substring(0, textMessage.indexOf(':'));
             messageDatabase.addMessage(new MessageObject(message, number, false));
 
-            if(number.equals(currentNumber))
-            {
+            if(isSameNumber())
                 redisplayTexts();
-            }
+        }
+        private boolean isSameNumber()
+        {
+            String shortenedVersion = number.substring(number.length()-currentNumber.length());
+            return shortenedVersion.equals(currentNumber);
         }
     };
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,7 +103,7 @@ public class TextingActivity extends AppCompatActivity {
     }
     private void sendMessage()
     {
-        String number = numberText.getText().toString();
+        String number = fixNumber(numberText.getText().toString());
         if(number.equals(""))
         {
             Toast.makeText(getBaseContext(),"Please enter a number.", Toast.LENGTH_LONG).show();
@@ -154,6 +157,16 @@ public class TextingActivity extends AppCompatActivity {
         System.out.println(currentNumber);
         redisplayTexts();
 
+    }
+    private String fixNumber(String oldString)
+    {
+        String newString = "";
+        for(char c : oldString.toCharArray())
+        {
+            if(((int)c)<=57&&((int)c)>=48)
+                newString+=c;
+        }
+        return newString;
     }
 
     //allows program to get contacts from phone
@@ -255,5 +268,6 @@ public class TextingActivity extends AppCompatActivity {
         unregisterReceiver(intentReceiver);
         super.onPause();
     }
+
 
 }
