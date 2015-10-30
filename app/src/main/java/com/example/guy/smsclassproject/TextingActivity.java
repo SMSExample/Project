@@ -35,7 +35,9 @@ public class TextingActivity extends AppCompatActivity {
     final int RQS_PICKCONTACT = 1;
     ArrayList<MessageObject> messagesFromReceiver;
     IntentFilter intentFilter;
+    Intent addContact; //used to open contacts and add contact
     boolean wasCreated;
+
     private BroadcastReceiver intentReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent)
@@ -141,7 +143,7 @@ public class TextingActivity extends AppCompatActivity {
 
     }
 
-    @Override
+    //allows program to get contacts from phone
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // TODO Auto-generated method stub
         if(resultCode == RESULT_OK){
