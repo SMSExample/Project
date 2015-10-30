@@ -9,7 +9,7 @@
     android:theme="@style/AppTheme"
     android:background="@android:color/white"> <!--Changes background color of app-->>
 
-
+    //field that enters text messages
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -20,6 +20,7 @@
         android:layout_toLeftOf="@+id/sendButton"
         android:layout_alignTop="@+id/sendButton" />
 
+    //send button
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -27,6 +28,8 @@
         android:id="@+id/sendButton"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"/>
+
+    //previous button
     <Button
 
         android:layout_height="60dp"
@@ -35,6 +38,8 @@
         android:id="@+id/prevButton"
         android:layout_above="@id/sendButton"
         android:layout_alignParentLeft="true"/>
+
+    //next button
     <Button
 
         android:layout_height="60dp"
@@ -44,6 +49,7 @@
         android:layout_above="@id/sendButton"
         android:layout_alignParentRight="true"/>
 
+    //Scrolling window that contains messages
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -132,8 +138,9 @@
         </LinearLayout>
     </ScrollView>
 
+    //feild to enter phone number
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="50dp"
         android:layout_height="40dp"
         android:id="@+id/numberText"
         android:layout_alignParentTop="true"
@@ -141,13 +148,24 @@
         android:layout_alignParentStart="true"
         android:layout_toLeftOf="@+id/contacts"/>
 
+    //button to access existing contacts
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Contacts"
         android:id="@+id/contacts"
         android:layout_above="@+id/scrollView"
-        android:layout_alignLeft="@+id/nextButton"
-        android:layout_alignStart="@+id/nextButton"
+
+        android:layout_toLeftOf="@+id/add"
         android:layout_alignParentTop="true" />
+
+    //button to add contact
+    <Button
+        android:layout_width="35dp"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:id="@+id/add"
+        android:layout_above="@+id/scrollView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true" />
 </RelativeLayout>

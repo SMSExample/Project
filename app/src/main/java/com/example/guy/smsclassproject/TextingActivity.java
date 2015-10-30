@@ -26,6 +26,7 @@ public class TextingActivity extends AppCompatActivity {
     //All values used on this page
     Button sendButton;
     Button contactButton;
+    Button addContactButton;
     MessageDatabase messageDatabase;
     EditText numberText;
     EditText messageText;
@@ -61,6 +62,7 @@ public class TextingActivity extends AppCompatActivity {
         messageDatabase = new MessageDatabase();
         sendButton = (Button)findViewById(R.id.sendButton);
         contactButton = (Button) findViewById(R.id.contacts);
+        addContactButton = (Button) findViewById(R.id.add);
         numberText = (EditText)findViewById(R.id.numberText);
         messageText = (EditText) findViewById(R.id.messageText);
         initializeMessageButtons();
@@ -81,6 +83,17 @@ public class TextingActivity extends AppCompatActivity {
             }
 
         });
+
+        //Action for add button
+        addContactButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                addContact = new Intent(Intent.ACTION_INSERT);
+                addContact.setType(ContactsContract.RawContacts.CONTENT_TYPE);
+                startActivity(addContact);
+            }
+
+        });
+
         wasCreated = true;
 
 
