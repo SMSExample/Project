@@ -31,6 +31,7 @@ public class MessageDatabase
     }
     public ArrayList<MessageObject> getMessagesByNumber(String number)
     {
+
         return smsData.getMessagesByNumber(number);
     }
 }

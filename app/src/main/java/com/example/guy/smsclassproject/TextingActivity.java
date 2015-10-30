@@ -6,7 +6,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -20,13 +23,16 @@ import java.util.ArrayList;
 
 public class TextingActivity extends AppCompatActivity {
 
+    //All values used on this page
     Button sendButton;
+    Button contactButton;
     MessageDatabase messageDatabase;
     EditText numberText;
     EditText messageText;
     static String currentNumber;
     Button[] messageButtons;
     int page;
+    final int RQS_PICKCONTACT = 1;
     ArrayList<MessageObject> messagesFromReceiver;
     IntentFilter intentFilter;
     boolean wasCreated;
@@ -52,12 +58,24 @@ public class TextingActivity extends AppCompatActivity {
         intentFilter.addAction("SMS_RECEIVED_ACTION");
         messageDatabase = new MessageDatabase();
         sendButton = (Button)findViewById(R.id.sendButton);
+        contactButton = (Button) findViewById(R.id.contacts);
         numberText = (EditText)findViewById(R.id.numberText);
         messageText = (EditText) findViewById(R.id.messageText);
         initializeMessageButtons();
         sendButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 sendMessage();
+            }
+
+        });
+
+        //Action Listener for contact button
+        contactButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //Start activity to get contact
+                final Uri uriContact = ContactsContract.Contacts.CONTENT_URI;
+                Intent intentPickContact = new Intent(Intent.ACTION_PICK, uriContact);
+                startActivityForResult(intentPickContact, RQS_PICKCONTACT);
             }
 
         });
@@ -74,7 +92,7 @@ public class TextingActivity extends AppCompatActivity {
             return;
         }
         String message = messageText.getText().toString();
-        messageDatabase.addMessage(new MessageObject(message, number,true));
+        messageDatabase.addMessage(new MessageObject(message, number, true));
 
         String SENT = "Message Sent";
         String DELIVERED = "Message Delivered";
@@ -118,9 +136,53 @@ public class TextingActivity extends AppCompatActivity {
 
         sms.sendTextMessage(number, null, message, sendPI, deliveredPI);
         currentNumber = number;
+        System.out.println(currentNumber);
         redisplayTexts();
 
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // TODO Auto-generated method stub
+        if(resultCode == RESULT_OK){
+            if(requestCode == RQS_PICKCONTACT){
+                Uri returnUri = data.getData();
+                Cursor cursor = getContentResolver().query(returnUri, null, null, null, null);
+
+                if(cursor.moveToNext()){
+                    int columnIndex_ID = cursor.getColumnIndex(ContactsContract.Contacts._ID);
+                    String contactID = cursor.getString(columnIndex_ID);
+
+                    int columnIndex_HASPHONENUMBER = cursor.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER);
+                    String stringHasPhoneNumber = cursor.getString(columnIndex_HASPHONENUMBER);
+
+                    if(stringHasPhoneNumber.equalsIgnoreCase("1")){
+                        Cursor cursorNum = getContentResolver().query(
+                                ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+                                null,
+                                ContactsContract.CommonDataKinds.Phone.CONTACT_ID + "=" + contactID,
+                                null,
+                                null);
+
+                        //Get the first phone number
+                        if(cursorNum.moveToNext()){
+                            int columnIndex_number = cursorNum.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
+                            String stringNumber = cursorNum.getString(columnIndex_number);
+                            numberText.setText(stringNumber);
+                        }
+
+                    }else{
+                        numberText.setText("NO Phone Number");
+                    }
+
+
+                }else{
+                    Toast.makeText(getApplicationContext(), "NO data!", Toast.LENGTH_LONG).show();
+                }
+            }
+        }
+    }
+
     private void redisplayTexts()
     {
         messagesFromReceiver = messageDatabase.getMessagesByNumber(currentNumber);
