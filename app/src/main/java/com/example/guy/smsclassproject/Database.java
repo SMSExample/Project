@@ -32,8 +32,8 @@ public class Database
     }
 
     /**
-     *
-     * @param mO
+     *Delete the message from the database
+     * @param mO the
      */
     public void deleteMessage(MessageObject mO)
     {
@@ -44,8 +44,8 @@ public class Database
     }
 
     /**
-     *
-     * @param mOs
+     *Delete all the messages in the given list.
+     * @param mOs The list
      */
     public void deleteMessageList(ArrayList<MessageObject> mOs)
     {
@@ -56,9 +56,10 @@ public class Database
     }
 
     /**
-     *
-     * @param key
-     * @return
+     *Take some key words and return all the messages that
+     * contain those.
+     * @param key The word(s).
+     * @return Messages that contain the keyword(s).
      */
     public ArrayList<MessageObject> getMessagesByKey(String key)
     {

@@ -30,6 +30,7 @@ public class TextingActivity extends AppCompatActivity {
     Button contactButton;
     Button addContactButton;
     MessageDatabase messageDatabase;
+    DraftsDatabase draftsDatabase;
     EditText numberText;
     EditText messageText;
     static String currentNumber;
@@ -67,6 +68,7 @@ public class TextingActivity extends AppCompatActivity {
         intentFilter = new IntentFilter();
         intentFilter.addAction("SMS_RECEIVED_ACTION");
         messageDatabase = new MessageDatabase();
+        draftsDatabase = new DraftsDatabase();
         sendButton = (Button)findViewById(R.id.sendButton);
         contactButton = (Button) findViewById(R.id.contacts);
         addContactButton = (Button) findViewById(R.id.add);
@@ -318,6 +320,13 @@ public class TextingActivity extends AppCompatActivity {
     {
         unregisterReceiver(intentReceiver);
         super.onPause();
+    }
+    private void saveToDrafts()
+    {
+        String number = numberText.getText().toString();
+        String message = messageText.getText().toString();
+        draftsDatabase.addMessage(new MessageObject(message,number,true));
+        Toast.makeText(getApplicationContext(), "Message saved to drafts.", Toast.LENGTH_LONG).show();
     }
 
 
