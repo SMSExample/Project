@@ -8,32 +8,29 @@ import java.util.HashMap;
 public class Database
 {
     private HashMap<String,ArrayList<MessageObject>> messages;
+    private ArrayList<MessageObject> messagesInOrder;
+
     public Database()
     {
         messages = new HashMap<>();
+        messagesInOrder = new ArrayList<>();
     }
     public void addMessage(MessageObject mO)
     {
         String num = mO.getNumber();
         if(!messages.containsKey(num))
         {
-            messages.put(num,this.GetExistingNumber(num));
+            messages.put(num,this.getExistingNumber(num));
         }
-            messages.get(num).add(mO);
+            messages.get(num).add(0,mO);
+        messagesInOrder.add(0,mO);
     }
     public void deleteMessage(MessageObject mO)
     {
         String num = mO.getNumber();
         ArrayList<MessageObject> messagesFromNum = messages.get(num);
-        for(int x = 0; x<messagesFromNum.size(); x++)
-        {
-            MessageObject messageObj = messagesFromNum.get(0);
-            if(messageObj==mO)
-            {
-                messagesFromNum.remove(x);
-                break;
-            }
-        }
+        messagesFromNum.remove(mO);
+        messagesInOrder.remove(mO);
     }
     public void deleteMessageList(ArrayList<MessageObject> mOs)
     {
@@ -60,7 +57,7 @@ public class Database
     {
         return messages.get(number);
     }
-    public ArrayList<MessageObject> GetExistingNumber(String newNum)
+    public ArrayList<MessageObject> getExistingNumber(String newNum)
     {
         for(String oldNum : messages.keySet())
         {
@@ -79,6 +76,10 @@ public class Database
             }
         }
         return new ArrayList<MessageObject>();
+    }
+    public ArrayList<MessageObject> getAllTexts()
+    {
+        return messagesInOrder;
     }
 
 }

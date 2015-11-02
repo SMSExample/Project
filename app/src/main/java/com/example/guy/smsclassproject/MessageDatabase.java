@@ -34,4 +34,8 @@ public class MessageDatabase
 
         return smsData.getMessagesByNumber(number);
     }
+    public ArrayList<MessageObject> getAllTexts()
+    {
+        return smsData.getAllTexts();
+    }
 }

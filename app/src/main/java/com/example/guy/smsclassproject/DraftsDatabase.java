@@ -33,4 +33,8 @@ public class DraftsDatabase
     {
         return draftData.getMessagesByNumber(number);
     }
+    public ArrayList<MessageObject> getAllTexts()
+    {
+        return draftData.getAllTexts();
+    }
 }
