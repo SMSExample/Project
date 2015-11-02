@@ -25,6 +25,7 @@ public class TextingActivity extends AppCompatActivity {
 
     //All values used on this page
     Button sendButton;
+    Button saveButton;
     Button nextPageButton;
     Button prevPageButton;
     Button contactButton;
@@ -70,6 +71,7 @@ public class TextingActivity extends AppCompatActivity {
         messageDatabase = new MessageDatabase();
         draftsDatabase = new DraftsDatabase();
         sendButton = (Button)findViewById(R.id.sendButton);
+        saveButton = (Button)findViewById(R.id.saveButton);
         contactButton = (Button) findViewById(R.id.contacts);
         addContactButton = (Button) findViewById(R.id.add);
         nextPageButton = (Button)findViewById(R.id.nextButton);
@@ -121,6 +123,13 @@ public class TextingActivity extends AppCompatActivity {
                     return;
                 page--;
                 redisplayTexts();
+            }
+        });
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveToDrafts();
+                Toast.makeText(getBaseContext(),"Message saved!", Toast.LENGTH_SHORT).show();
             }
         });
 
