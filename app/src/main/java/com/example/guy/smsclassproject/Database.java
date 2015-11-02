@@ -15,6 +15,11 @@ public class Database
         messages = new HashMap<>();
         messagesInOrder = new ArrayList<>();
     }
+
+    /**
+     *
+     * @param mO
+     */
     public void addMessage(MessageObject mO)
     {
         String num = mO.getNumber();
@@ -25,6 +30,11 @@ public class Database
             messages.get(num).add(0,mO);
         messagesInOrder.add(0,mO);
     }
+
+    /**
+     *
+     * @param mO
+     */
     public void deleteMessage(MessageObject mO)
     {
         String num = mO.getNumber();
@@ -32,6 +42,11 @@ public class Database
         messagesFromNum.remove(mO);
         messagesInOrder.remove(mO);
     }
+
+    /**
+     *
+     * @param mOs
+     */
     public void deleteMessageList(ArrayList<MessageObject> mOs)
     {
         for(MessageObject mO: mOs)
@@ -39,6 +54,12 @@ public class Database
             deleteMessage(mO);
         }
     }
+
+    /**
+     *
+     * @param key
+     * @return
+     */
     public ArrayList<MessageObject> getMessagesByKey(String key)
     {
         ArrayList<MessageObject> messagesThatContainKey = new ArrayList<>();
@@ -53,10 +74,26 @@ public class Database
         }
         return messagesThatContainKey;
     }
+
+    /**
+     * Get all the text messages that were sent to
+     * and from a phone number.
+     * @param number The number that all the messages were sent
+     * to and from.
+     * @return All the messages that were sent to and from that number.
+     */
     public ArrayList<MessageObject> getMessagesByNumber(String number)
     {
         return messages.get(number);
     }
+
+    /**
+     * Checks to see if a number already
+     * exists in the database.
+     * @param newNum The number that is checked.
+     * @return An arraylist of all the texts sent
+     * to and from the checked number if it already existed.
+     */
     public ArrayList<MessageObject> getExistingNumber(String newNum)
     {
         for(String oldNum : messages.keySet())
@@ -77,9 +114,15 @@ public class Database
         }
         return new ArrayList<MessageObject>();
     }
+
+    /**
+     * Get all the texts in the order that they
+     * were produced
+     * @return The Arraylist of all the messages that
+     * were produced in the order that they were produced.
+     */
     public ArrayList<MessageObject> getAllTexts()
     {
         return messagesInOrder;
     }
-
 }
