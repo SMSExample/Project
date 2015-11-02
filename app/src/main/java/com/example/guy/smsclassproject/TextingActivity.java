@@ -254,6 +254,32 @@ public class TextingActivity extends AppCompatActivity {
         messageButtons[7] = (Button)findViewById(R.id.textButton8);
         messageButtons[8] = (Button)findViewById(R.id.textButton9);
         messageButtons[9] = (Button)findViewById(R.id.textButton10);
+        for(Button button : messageButtons)
+        {
+            button.setOnClickListener(new MessageOnClickListener());
+        }
+    }
+    private class MessageOnClickListener implements View.OnClickListener {
+        public void onClick(View v)
+        {
+            Button button = (Button)v;
+            int textIndex = getButtonIndex(button)+10*page;
+            if(textIndex>=messagesFromReceiver.size())
+                return;
+            MessageObject messageInButton = messagesFromReceiver.get(textIndex);
+            SingleTextActivity.setMessage(messageInButton);
+            startActivity(new Intent(TextingActivity.this, SingleTextActivity.class));
+
+        }
+    }
+    private int getButtonIndex(Button b)
+    {
+        for(int x = 0; x<messageButtons.length; x++)
+        {
+            if(messageButtons[x]==b)
+                return x;
+        }
+        return -1;
     }
     protected void onResume()
     {

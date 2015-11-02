@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.guy.smsclassproject" >
+
+    <uses-sdk android:minSdkVersion="10" />
     android:versionCode="1"
     android:versionName="1.0">
-    <uses-sdk android:minSdkVersion="10"/>
-    <uses-permission android:name="android.permission.SEND_SMS"></uses-permission>
-    <uses-permission android:name="android.permission.RECEIVE_SMS"></uses-permission>
-    <uses-permission android:name="android.permission.READ_CONTACTS"></uses-permission>
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+    <android:uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <android:uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -14,7 +20,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
 
-        <!-- main menu-->
+        <!-- main menu -->
         <activity android:name=".MenuActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,24 +29,32 @@
             </intent-filter>
         </activity>
 
-        <!-- Drafts-->
+        <!-- Drafts -->
         <activity android:name=".DraftsActivity" >
         </activity>
 
-        <!-- History-->
-        <activity android:name=".HistoryActivity"
-            android:windowSoftInputMode="adjustPan"> <!-- stops keyboard from messing up layout -->
+        <!-- History -->
+        <activity
+            android:name=".HistoryActivity"
+            android:windowSoftInputMode="adjustPan" > <!-- stops keyboard from messing up layout -->
         </activity>
 
-        <!-- Texts-->
-        <activity android:name=".TextingActivity"
-            android:windowSoftInputMode="adjustPan"> <!-- stops keyboard from messing up layout -->
+        <!-- Texts -->
+        <activity
+            android:name=".TextingActivity"
+            android:windowSoftInputMode="adjustPan" > <!-- stops keyboard from messing up layout -->
         </activity>
-        <receiver android:name = ".SmsReceiver">
+
+        <receiver android:name=".SmsReceiver" >
             <intent-filter>
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
         </receiver>
+
+        <activity
+            android:name=".SingleTextActivity"
+            android:label="@string/title_activity_single_text" >
+        </activity>
     </application>
 
 </manifest>
