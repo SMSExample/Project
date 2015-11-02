@@ -25,6 +25,8 @@ public class TextingActivity extends AppCompatActivity {
 
     //All values used on this page
     Button sendButton;
+    Button nextPageButton;
+    Button prevPageButton;
     Button contactButton;
     Button addContactButton;
     MessageDatabase messageDatabase;
@@ -68,6 +70,8 @@ public class TextingActivity extends AppCompatActivity {
         sendButton = (Button)findViewById(R.id.sendButton);
         contactButton = (Button) findViewById(R.id.contacts);
         addContactButton = (Button) findViewById(R.id.add);
+        nextPageButton = (Button)findViewById(R.id.nextButton);
+        prevPageButton = (Button)findViewById(R.id.prevButton);
         numberText = (EditText)findViewById(R.id.numberText);
         messageText = (EditText) findViewById(R.id.messageText);
         initializeMessageButtons();
@@ -97,6 +101,25 @@ public class TextingActivity extends AppCompatActivity {
                 startActivity(addContact);
             }
 
+        });
+        nextPageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if((messagesFromReceiver.size()-1)/10<=page)
+                    return;
+                page++;
+                redisplayTexts();
+
+            }
+        });
+        prevPageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(page<=0)
+                    return;
+                page--;
+                redisplayTexts();
+            }
         });
 
         wasCreated = true;
