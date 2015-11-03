@@ -64,14 +64,10 @@ public class Database
     public ArrayList<MessageObject> getMessagesByKey(String key)
     {
         ArrayList<MessageObject> messagesThatContainKey = new ArrayList<>();
-        for(String number : messages.keySet())
+        for(MessageObject message : messagesInOrder)
         {
-            ArrayList<MessageObject> messagesByNumber = messages.get(number);
-            for(MessageObject message : messagesByNumber)
-            {
-                if(message.getSmsMessage().indexOf(key)!=-1)
-                    messagesThatContainKey.add(message);
-            }
+            if(message.getSmsMessage().indexOf(key)!=-1)
+                messagesThatContainKey.add(message);
         }
         return messagesThatContainKey;
     }
