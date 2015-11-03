@@ -17,22 +17,32 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_toLeftOf="@+id/sendButton"
-        android:layout_alignTop="@+id/sendButton" />
+        android:layout_toLeftOf="@+id/saveButton" />
 
     //send button
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="64dp"
+        android:layout_height="48dp"
         android:text="Send"
         android:id="@+id/sendButton"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentRight="true"
+        android:textSize="12sp"/>
+
+    //save to drafts button
+    <Button
+        android:layout_width="64dp"
+        android:layout_height="48dp"
+        android:text="Save"
+        android:id="@+id/saveButton"
+        android:layout_toLeftOf="@id/sendButton"
+        android:layout_alignParentBottom="true"
+        android:textSize="12sp"/>
 
     //previous button
     <Button
 
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:text="Previous"
         android:id="@+id/prevButton"
@@ -42,7 +52,7 @@
     //next button
     <Button
 
-        android:layout_height="60dp"
+        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:text="Next"
         android:id="@+id/nextButton"
@@ -155,7 +165,6 @@
         android:text="Contacts"
         android:id="@+id/contacts"
         android:layout_above="@+id/scrollView"
-
         android:layout_toLeftOf="@+id/add"
         android:layout_alignParentTop="true" />
 
