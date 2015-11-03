@@ -182,7 +182,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="1"
-        android:id="@+id/textView"
+        android:id="@+id/pageNumber"
         android:layout_above="@+id/saveButton"
         android:layout_centerHorizontal="true"
         android:layout_alignTop="@+id/prevButton"
