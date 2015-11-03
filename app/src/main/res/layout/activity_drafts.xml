@@ -9,6 +9,141 @@
     android:theme="@style/AppTheme"
     android:background="@android:color/white"> <!--Changes background color of app-->>>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView"
 
+
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/searchText"
+        android:layout_above="@+id/prevButton">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="120dp"
+                android:id="@+id/textButton1"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:text=""/>
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="120dp"
+                android:id="@+id/textButton2"
+                android:layout_below="@+id/textButton1"
+                android:layout_alignParentLeft="true"
+                android:text=""/>
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="120dp"
+                android:id="@+id/textButton3"
+                android:layout_below="@+id/textButton2"
+                android:layout_alignParentLeft="true"
+                android:text=""/>
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="120dp"
+                android:id="@+id/textButton4"
+                android:layout_below="@+id/textButton3"
+                android:layout_alignParentLeft="true"
+                android:text=""/>
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="120dp"
+                android:id="@+id/textButton5"
+                android:layout_below="@+id/textButton4"
+                android:layout_alignParentLeft="true"
+                android:text=""/>
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="120dp"
+                android:id="@+id/textButton6"
+                android:layout_below="@+id/textButton5"
+                android:layout_alignParentLeft="true"
+                android:text=""/>
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="120dp"
+                android:id="@+id/textButton7"
+                android:layout_below="@+id/textButton6"
+                android:layout_alignParentLeft="true"
+                android:text=""/>
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="120dp"
+                android:id="@+id/textButton8"
+                android:layout_below="@+id/textButton7"
+                android:layout_alignParentLeft="true"
+                android:text=""/>
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="120dp"
+                android:id="@+id/textButton9"
+                android:layout_below="@+id/textButton8"
+                android:layout_alignParentLeft="true"
+                android:text=""/>
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="120dp"
+                android:id="@+id/textButton10"
+                android:layout_below="@+id/textButton9"
+                android:layout_alignParentLeft="true"
+                android:text=""/>
+
+        </LinearLayout>
+    </ScrollView>
+
+    //searchText
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/searchText"
+        android:layout_toLeftOf="@+id/searchButton"/>
+
+    //searchButton
+    <Button
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:text="search"
+        android:id="@+id/searchButton"
+        android:layout_above="@+id/scrollView"
+        android:layout_alignRight="@+id/scrollView"/>
+
+    //previous button
+    <Button
+
+        android:layout_height="60dp"
+        android:layout_width="wrap_content"
+        android:text="Previous"
+        android:id="@+id/prevButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true" />
+
+    //next button
+    <Button
+
+        android:layout_height="60dp"
+        android:layout_width="wrap_content"
+        android:text="Next"
+        android:id="@+id/nextButton"
+
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignTop="@+id/prevButton" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="1"
+        android:id="@+id/pageNumber"
+        android:layout_alignTop="@+id/nextButton"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true" />
 
 </RelativeLayout>

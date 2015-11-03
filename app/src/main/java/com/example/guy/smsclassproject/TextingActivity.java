@@ -18,6 +18,7 @@ import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
 
@@ -42,7 +43,8 @@ public class TextingActivity extends AppCompatActivity {
     IntentFilter intentFilter;
     Intent addContact; //used to open contacts and add contact
     boolean wasCreated;
-
+    static MessageObject continueMessage;
+    private TextView pageNumber;
     private BroadcastReceiver intentReceiver = new BroadcastReceiver() {
         String number;
         public void onReceive(Context context, Intent intent)
@@ -78,6 +80,7 @@ public class TextingActivity extends AppCompatActivity {
         prevPageButton = (Button)findViewById(R.id.prevButton);
         numberText = (EditText)findViewById(R.id.numberText);
         messageText = (EditText) findViewById(R.id.messageText);
+        pageNumber = (TextView) findViewById(R.id.pageNumber);
         initializeMessageButtons();
         sendButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -134,8 +137,17 @@ public class TextingActivity extends AppCompatActivity {
         });
 
         wasCreated = true;
+        if(continueMessage!=null) {
+            numberText.setText(continueMessage.getNumber());
+            messageText.setText(continueMessage.getSmsMessage());
+        }
+        continueMessage=null;
 
 
+    }
+    public static void continueMessage(MessageObject mO)
+    {
+        continueMessage=mO;
     }
     private void sendMessage()
     {
@@ -267,6 +279,7 @@ public class TextingActivity extends AppCompatActivity {
             str +=message.getSmsMessage();
             messageButtons[i].setText(str);
         }
+        pageNumber.setText(""+(page+1));
     }
     private void clearTheRest(int startButton)
     {
