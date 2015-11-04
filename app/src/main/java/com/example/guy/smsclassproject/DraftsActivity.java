@@ -95,7 +95,10 @@ public class DraftsActivity extends AppCompatActivity {
                 if(draftButtons[loc]==v)
                     break;
             }
-            MessageObject continueMessage = messagesToBeDisplayed.get(loc+10*page);
+            int draftIndex = loc+10*page;
+            if(draftIndex>=messagesToBeDisplayed.size())
+                return;
+            MessageObject continueMessage = messagesToBeDisplayed.get(draftIndex);
             draftsDatabase.deleteMessage(continueMessage);
             TextingActivity.continueMessage(continueMessage);
             page=0;
@@ -132,14 +135,6 @@ public class DraftsActivity extends AppCompatActivity {
             draftButtons[i].setText("");
         }
     }
-    private int getButtonIndex(Button b)
-    {
-        for(int x = 0; x<draftButtons.length; x++)
-        {
-            if(draftButtons[x]==b)
-                return x;
-        }
-        return -1;
-    }
+
 
 }

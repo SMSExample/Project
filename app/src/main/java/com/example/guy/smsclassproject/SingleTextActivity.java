@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.ZoomControls;
 
+import java.util.ArrayList;
+
 public class SingleTextActivity extends AppCompatActivity {
 
     private static MessageObject theMessage;
@@ -17,6 +19,7 @@ public class SingleTextActivity extends AppCompatActivity {
     private Button deleteButton;
     private ZoomControls zoomControls;
     private float textSize;
+    static private ArrayList<MessageObject> deleteFromThisList;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -82,9 +85,19 @@ public class SingleTextActivity extends AppCompatActivity {
     private void deleteMessage()
     {
         messageDatabase.deleteMessage(theMessage);
+        if(deleteFromThisList!=null)
+        {
+            deleteFromThisList.remove(theMessage);
+            deleteFromThisList=null;
+        }
         singleText.setText("Message Deleted!");
 
     }
+    public static void deleteFromList(ArrayList<MessageObject> listOfMessages)
+    {
+        deleteFromThisList = listOfMessages;
+    }
+
     private void zoomIn()
     {
         textSize*=1.2;
