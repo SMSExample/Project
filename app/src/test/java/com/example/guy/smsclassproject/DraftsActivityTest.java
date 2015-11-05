@@ -34,8 +34,8 @@ public class DraftsActivityTest extends ActivityInstrumentationTestCase2<DraftsA
     @BeforeClass
     public void setUp() throws Exception
     {
-
         super.setUp();
+        //DraftsActivity activityMonitor = getInstrumentation().addMonitor(NextActivity.class.getName(), null, false);
         draftsDatabase = new DraftsDatabase();
         messageObject1 = new MessageObject("hi","5554",true);
         messageObject2 = new MessageObject("hi hi","5555554",true);
@@ -43,16 +43,21 @@ public class DraftsActivityTest extends ActivityInstrumentationTestCase2<DraftsA
         draftsDatabase.addMessage(messageObject1);
         draftsDatabase.addMessage(messageObject2);
         draftsDatabase.addMessage(messageObject3);
-        tester = getActivity();
+        messagesToBeDisplayed = draftsDatabase.getAllTexts();
+        tester = new DraftsActivity();//getActivity();
         messagesToBeDisplayed = tester.messagesToBeDisplayed;
         searchText = (EditText) tester.findViewById(R.id.searchText);
         searchButton = (Button) tester.findViewById(R.id.searchButton);
+
     }
+
+
     @Test
     public void testSearchButton()
     {
         searchText.setText("hi");
         searchButton.performClick();
+        messagesToBeDisplayed=draftsDatabase.getMessagesByKey(searchText.getText().toString());
         assertEquals("Messages with the word hi",2,messagesToBeDisplayed.size());
 
     }
