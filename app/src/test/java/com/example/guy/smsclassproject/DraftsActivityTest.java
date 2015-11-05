@@ -44,7 +44,7 @@ public class DraftsActivityTest extends ActivityInstrumentationTestCase2<DraftsA
         draftsDatabase.addMessage(messageObject2);
         draftsDatabase.addMessage(messageObject3);
         messagesToBeDisplayed = draftsDatabase.getAllTexts();
-        tester = new DraftsActivity();//getActivity();
+        tester = new DraftsActivity();                                  //getActivity();
         messagesToBeDisplayed = tester.messagesToBeDisplayed;
         searchText = (EditText) tester.findViewById(R.id.searchText);
         searchButton = (Button) tester.findViewById(R.id.searchButton);
@@ -53,12 +53,27 @@ public class DraftsActivityTest extends ActivityInstrumentationTestCase2<DraftsA
 
 
     @Test
-    public void testSearchButton()
+    public void testSearch()
     {
         searchText.setText("hi");
         searchButton.performClick();
         messagesToBeDisplayed=draftsDatabase.getMessagesByKey(searchText.getText().toString());
         assertEquals("Messages with the word hi", 5, messagesToBeDisplayed.size());
+
+        searchText.setText("sup");
+        searchButton.performClick();
+        messagesToBeDisplayed=draftsDatabase.getMessagesByKey(searchText.getText().toString());
+        assertEquals("Messages with the word sup",1,messagesToBeDisplayed.size());
+
+        searchText.setText("yo");
+        searchButton.performClick();
+        messagesToBeDisplayed=draftsDatabase.getMessagesByKey(searchText.getText().toString());
+        assertEquals("Messages with the word yo",0,messagesToBeDisplayed.size());
+
+        searchText.setText("i");
+        searchButton.performClick();
+        messagesToBeDisplayed=draftsDatabase.getMessagesByKey(searchText.getText().toString());
+        assertEquals("Messages with the word i",2,messagesToBeDisplayed.size());
 
     }
 
