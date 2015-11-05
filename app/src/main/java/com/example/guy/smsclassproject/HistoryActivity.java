@@ -11,7 +11,8 @@ import android.widget.TextView;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class HistoryActivity extends AppCompatActivity {
+public class
+        HistoryActivity extends AppCompatActivity {
     Button[] messageButtons;
     Button searchButton;
     Button prevButton;
