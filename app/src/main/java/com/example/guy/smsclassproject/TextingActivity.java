@@ -82,59 +82,16 @@ public class TextingActivity extends AppCompatActivity {
         messageText = (EditText) findViewById(R.id.messageText);
         pageNumber = (TextView) findViewById(R.id.pageNumber);
         initializeMessageButtons();
-        sendButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                sendMessage();
-            }
-
-        });
+        sendButton.setOnClickListener(new MessageOnClickListener());
 
         //Action Listener for contact button
-        contactButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                //Start activity to get contact
-                final Uri uriContact = ContactsContract.Contacts.CONTENT_URI;
-                Intent intentPickContact = new Intent(Intent.ACTION_PICK, uriContact);
-                startActivityForResult(intentPickContact, RQS_PICKCONTACT);
-            }
-
-        });
+        contactButton.setOnClickListener(new MessageOnClickListener());
 
         //Action for add button
-        addContactButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                addContact = new Intent(Intent.ACTION_INSERT);
-                addContact.setType(ContactsContract.RawContacts.CONTENT_TYPE);
-                startActivity(addContact);
-            }
-
-        });
-        nextPageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if((messagesFromReceiver.size()-1)/10<=page)
-                    return;
-                page++;
-                redisplayTexts();
-
-            }
-        });
-        prevPageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(page<=0)
-                    return;
-                page--;
-                redisplayTexts();
-            }
-        });
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                saveToDrafts();
-                Toast.makeText(getBaseContext(),"Message saved!", Toast.LENGTH_SHORT).show();
-            }
-        });
+        addContactButton.setOnClickListener(new MessageOnClickListener());
+        nextPageButton.setOnClickListener(new MessageOnClickListener());
+        prevPageButton.setOnClickListener(new MessageOnClickListener());
+        saveButton.setOnClickListener(new MessageOnClickListener());
 
         wasCreated = true;
         if(continueMessage!=null) {
@@ -144,6 +101,56 @@ public class TextingActivity extends AppCompatActivity {
         continueMessage=null;
 
 
+    }
+    private class MessageOnClickListener implements View.OnClickListener {
+        public void onClick(View v)
+        {
+            if(v==sendButton)
+            {
+                sendMessage();
+            }
+            else if(v==contactButton)
+            {
+                final Uri uriContact = ContactsContract.Contacts.CONTENT_URI;
+                Intent intentPickContact = new Intent(Intent.ACTION_PICK, uriContact);
+                startActivityForResult(intentPickContact, RQS_PICKCONTACT);
+            }
+            else if(v==addContactButton)
+            {
+                addContact = new Intent(Intent.ACTION_INSERT);
+                addContact.setType(ContactsContract.RawContacts.CONTENT_TYPE);
+                startActivity(addContact);
+            }
+            else if(v==nextPageButton)
+            {
+                if((messagesFromReceiver.size()-1)/10<=page)
+                    return;
+                page++;
+                redisplayTexts();
+            }
+            else if(v==prevPageButton)
+            {
+                if(page<=0)
+                    return;
+                page--;
+                redisplayTexts();
+            }
+            else if(v==saveButton)
+            {
+                saveToDrafts();
+                Toast.makeText(getBaseContext(),"Message saved!", Toast.LENGTH_SHORT).show();
+            }
+            else
+            {
+                Button button = (Button)v;
+                int textIndex = getButtonIndex(button)+10*page;
+                if(textIndex>=messagesFromReceiver.size())
+                    return;
+                MessageObject messageInButton = messagesFromReceiver.get(textIndex);
+                SingleTextActivity.setMessage(messageInButton);
+                startActivity(new Intent(TextingActivity.this, SingleTextActivity.class));
+            }
+        }
     }
     public static void continueMessage(MessageObject mO)
     {
@@ -306,19 +313,7 @@ public class TextingActivity extends AppCompatActivity {
             button.setOnClickListener(new MessageOnClickListener());
         }
     }
-    private class MessageOnClickListener implements View.OnClickListener {
-        public void onClick(View v)
-        {
-            Button button = (Button)v;
-            int textIndex = getButtonIndex(button)+10*page;
-            if(textIndex>=messagesFromReceiver.size())
-                return;
-            MessageObject messageInButton = messagesFromReceiver.get(textIndex);
-            SingleTextActivity.setMessage(messageInButton);
-            startActivity(new Intent(TextingActivity.this, SingleTextActivity.class));
 
-        }
-    }
     private int getButtonIndex(Button b)
     {
         for(int x = 0; x<messageButtons.length; x++)
