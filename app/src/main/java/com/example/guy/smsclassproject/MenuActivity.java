@@ -13,7 +13,9 @@ public class MenuActivity extends Activity {
     private Button toTexting;
     @Override
     /**
-     *
+     * Find all the Views of the MenuActivity.xml and give all the Buttons their
+     * onClickListeners
+     * @Param savedInstanceState The Bundle that is needed to call the super.onCreate().
      */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,21 +45,19 @@ public class MenuActivity extends Activity {
             }
         });
     }
-
+    //called when user touch the button, learned from http://developer.android.com/guide/topics/ui/controls/button.html
     /**
      * Start a new Activity "DraftsActivity" and takes the user there
      */
-    //called when user touch the button, learned from http://developer.android.com/guide/topics/ui/controls/button.html
     public void goToDrafts( ){
         //This one line will take the user from the MenuActivity to the Drafts activity.
         startActivity(new Intent(MenuActivity.this, DraftsActivity.class));
     }
 
+    //called when user touch the button, learned from http://developer.android.com/guide/topics/ui/controls/button.html
     /**
      * Start a new Activity "HistoryActivity" and takes the user there.
      */
-
-    //called when user touch the button, learned from http://developer.android.com/guide/topics/ui/controls/button.html
     public void goToTextHistory(){
         startActivity(new Intent(MenuActivity.this, HistoryActivity.class));
     }
