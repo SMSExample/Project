@@ -23,7 +23,12 @@ android {
         unitTests.returnDefaultValues = true
 
     }
+    defaultConfig
+    {
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
 }
+
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
