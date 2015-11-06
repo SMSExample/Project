@@ -12,6 +12,9 @@ public class MenuActivity extends Activity {
     private Button toHistory;
     private Button toTexting;
     @Override
+    /**
+     *
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
@@ -40,16 +43,29 @@ public class MenuActivity extends Activity {
             }
         });
     }
+
+    /**
+     * Start a new Activity "DraftsActivity" and takes the user there
+     */
     //called when user touch the button, learned from http://developer.android.com/guide/topics/ui/controls/button.html
     public void goToDrafts( ){
         //This one line will take the user from the MenuActivity to the Drafts activity.
         startActivity(new Intent(MenuActivity.this, DraftsActivity.class));
     }
 
+    /**
+     * Start a new Activity "HistoryActivity" and takes the user there.
+     */
+
     //called when user touch the button, learned from http://developer.android.com/guide/topics/ui/controls/button.html
     public void goToTextHistory(){
         startActivity(new Intent(MenuActivity.this, HistoryActivity.class));
     }
+
+    /**
+     * Start a new Activity "TextingActivity", and takes the user to there.
+     *
+     */
     public void goToTexting(){
         startActivity(new Intent(MenuActivity.this, TextingActivity.class));
     }
