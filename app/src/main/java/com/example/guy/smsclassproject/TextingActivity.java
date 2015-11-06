@@ -117,6 +117,7 @@ public class TextingActivity extends AppCompatActivity {
             }
             else if(v==addContactButton)
             {
+                //intent opens add contact screen in contacts app
                 addContact = new Intent(Intent.ACTION_INSERT);
                 addContact.setType(ContactsContract.RawContacts.CONTENT_TYPE);
                 startActivity(addContact);

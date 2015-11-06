@@ -8,29 +8,38 @@
     tools:context="com.example.guy.smsclassproject.MenuActivity"
     android:background="@android:color/white"> <!--Changes background color of app-->>
 
+    //button to access text history
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:text="Recent Texts"
+        android:textColor="@android:color/white"
+        android:backgroundTint="@color/colorPrimary"
         android:id="@+id/goToTextHistory"
         android:layout_marginTop="141dp"
         android:onClick="goToTextHistory"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
+    //button that goes to saved drafts
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:text="Drafts"
+        android:textColor="@android:color/white"
+        android:backgroundTint="@color/colorPrimary"
         android:id="@+id/goToDrafts"
         android:onClick="goToDrafts"
         android:layout_below="@+id/textButton"
         android:layout_centerHorizontal="true" />
 
+    //button that goes to send text screen
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:text="Send A Text"
+        android:textColor="@android:color/white"
+        android:backgroundTint="@color/colorPrimary"
         android:id="@+id/textButton"
         android:layout_below="@+id/goToTextHistory"
         android:layout_centerHorizontal="true" />

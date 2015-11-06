@@ -7,7 +7,7 @@ import android.widget.*;
 
 import junit.framework.TestCase;
 
-import org.junit.Before;
+import org.junit.*;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -31,7 +31,7 @@ public class DraftsActivityTest extends ActivityInstrumentationTestCase2<DraftsA
     {
         super(DraftsActivity.class);
     }
-    @BeforeClass
+    @Before
     public void setUp() throws Exception
     {
         super.setUp();
@@ -58,7 +58,7 @@ public class DraftsActivityTest extends ActivityInstrumentationTestCase2<DraftsA
         searchText.setText("hi");
         searchButton.performClick();
         messagesToBeDisplayed=draftsDatabase.getMessagesByKey(searchText.getText().toString());
-        assertEquals("Messages with the word hi",2,messagesToBeDisplayed.size());
+        assertEquals("Messages with the word hi", 5, messagesToBeDisplayed.size());
 
         searchText.setText("sup");
         searchButton.performClick();
