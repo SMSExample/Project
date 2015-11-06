@@ -1,7 +1,6 @@
 package com.example.guy.smsclassproject;
 
 import android.content.DialogInterface;
-import android.provider.Telephony;
 import android.test.ActivityInstrumentationTestCase2;
 import android.view.*;
 import android.widget.*;
@@ -11,7 +10,7 @@ import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import android.content.*;
+
 import java.util.ArrayList;
 
 /**
@@ -36,8 +35,7 @@ public class DraftsActivityTest extends ActivityInstrumentationTestCase2<DraftsA
     public void setUp() throws Exception
     {
         super.setUp();
-       // DraftsActivity activityMonitor = getInstrumentation().addMonitor(NextActivity.class.getName(), null, false);
-
+        //DraftsActivity activityMonitor = getInstrumentation().addMonitor(NextActivity.class.getName(), null, false);
         draftsDatabase = new DraftsDatabase();
         messageObject1 = new MessageObject("hi","5554",true);
         messageObject2 = new MessageObject("hi hi","5555554",true);
@@ -46,9 +44,7 @@ public class DraftsActivityTest extends ActivityInstrumentationTestCase2<DraftsA
         draftsDatabase.addMessage(messageObject2);
         draftsDatabase.addMessage(messageObject3);
         messagesToBeDisplayed = draftsDatabase.getAllTexts();
-        Intent intent = new Intent(getInstrumentation().getTargetContext(), DraftsActivity.class);
-        setActivityIntent(intent);
-        tester = getActivity();
+        tester = new DraftsActivity();                                  //getActivity();
         messagesToBeDisplayed = tester.messagesToBeDisplayed;
         searchText = (EditText) tester.findViewById(R.id.searchText);
         searchButton = (Button) tester.findViewById(R.id.searchButton);
@@ -62,7 +58,7 @@ public class DraftsActivityTest extends ActivityInstrumentationTestCase2<DraftsA
         searchText.setText("hi");
         searchButton.performClick();
         messagesToBeDisplayed=draftsDatabase.getMessagesByKey(searchText.getText().toString());
-        assertEquals(100,messagesToBeDisplayed.size());
+        assertEquals("Messages with the word hi",2,messagesToBeDisplayed.size());
 
         searchText.setText("sup");
         searchButton.performClick();

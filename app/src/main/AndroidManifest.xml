@@ -19,12 +19,12 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="SMS"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
 
         <!-- main menu -->
-        <activity android:name=".MenuActivity" >
+        <activity android:name=".MenuActivity" android:label="SMS">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -34,18 +34,21 @@
 
         <!-- Drafts -->
         <activity android:name=".DraftsActivity"
-            android:windowSoftInputMode="adjustPan" > <!-- stops keyboard from messing up layout -->
+            android:label="Drafts"
+            android:windowSoftInputMode="adjustPan"> <!-- stops keyboard from messing up layout -->
         </activity>
 
         <!-- History -->
         <activity
             android:name=".HistoryActivity"
-            android:windowSoftInputMode="adjustPan" > <!-- stops keyboard from messing up layout -->
+            android:label="Recent Texts"
+            android:windowSoftInputMode="adjustPan"> <!-- stops keyboard from messing up layout -->
         </activity>
 
         <!-- Texts -->
         <activity
             android:name=".TextingActivity"
+            android:label="Texting"
             android:windowSoftInputMode="adjustPan" > <!-- stops keyboard from messing up layout -->
         </activity>
 
