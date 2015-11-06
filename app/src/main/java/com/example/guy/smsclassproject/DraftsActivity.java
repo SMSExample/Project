@@ -23,6 +23,10 @@ public class DraftsActivity extends AppCompatActivity {
     ArrayList<MessageObject> messagesToBeDisplayed;
 
     @Override
+    /**
+     * actions done when the activity starts
+     * @param savedInstanceState android class
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drafts);
@@ -40,6 +44,10 @@ public class DraftsActivity extends AppCompatActivity {
         redisplayTexts();
 
     }
+
+    /**
+     * calls search from database class and displays the results
+     */
     private void search()
     {
         messagesToBeDisplayed=draftsDatabase.getMessagesByKey(searchText.getText().toString());
@@ -47,6 +55,9 @@ public class DraftsActivity extends AppCompatActivity {
         redisplayTexts();
     }
 
+    /**
+     * sets up all the buttons used for messages
+     */
     private void initializeMessageButtons()
     {
         draftButtons = new Button[10];
@@ -65,6 +76,9 @@ public class DraftsActivity extends AppCompatActivity {
             button.setOnClickListener(new MessageOnClickListener());
         }
     }
+    /**
+     * Checks what button is clicked and responds accordingly
+     */
     private class MessageOnClickListener implements View.OnClickListener {
         public void onClick(View v)
         {
@@ -110,6 +124,9 @@ public class DraftsActivity extends AppCompatActivity {
 
         }
     }
+    /**
+     * displays drafts in groups of ten
+     */
     private void redisplayTexts()
     {
 
@@ -128,6 +145,11 @@ public class DraftsActivity extends AppCompatActivity {
         }
         pageNumber.setText(""+(page+1));
     }
+    /**
+     * clears text from buttons, mostly used when going to a new
+     * page of results
+     * @param startButton button to start clearing from
+     */
     private void clearTheRest(int startButton)
     {
         for(int i =  startButton; i<10; i++)

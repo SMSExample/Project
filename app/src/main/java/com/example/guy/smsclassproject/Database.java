@@ -17,8 +17,8 @@ public class Database
     }
 
     /**
-     *
-     * @param mO
+     * adds a message object to the database array list
+     * @param mO a message object
      */
     public void addMessage(MessageObject mO)
     {
@@ -32,8 +32,8 @@ public class Database
     }
 
     /**
-     *Delete the message from the database
-     * @param mO the
+     *Delete the message object from the database
+     * @param mO the message object
      */
     public void deleteMessage(MessageObject mO)
     {

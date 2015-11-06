@@ -47,6 +47,12 @@ public class TextingActivity extends AppCompatActivity {
     private TextView pageNumber;
     private BroadcastReceiver intentReceiver = new BroadcastReceiver() {
         String number;
+
+        /**
+         * acts when the phone recives a text
+         * @param context android class
+         * @param intent android class
+         */
         public void onReceive(Context context, Intent intent)
         {
             String textMessage = intent.getExtras().getString("sms");
@@ -57,6 +63,11 @@ public class TextingActivity extends AppCompatActivity {
             if(isSameNumber())
                 redisplayTexts();
         }
+
+        /**
+         *  checks shorted number and full number and derermines if they are the same
+         * @return last four digits of a phone number
+         */
         private boolean isSameNumber()
         {
             if(currentNumber==null)
@@ -65,6 +76,11 @@ public class TextingActivity extends AppCompatActivity {
             return shortenedVersion.equals(currentNumber);
         }
     };
+
+    /**
+     * actions done when the activity starts
+     * @param savedInstanceState android class
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_texting);
@@ -102,6 +118,10 @@ public class TextingActivity extends AppCompatActivity {
 
 
     }
+
+    /**
+     * Checks what button is clicked and responds accordingly
+     */
     private class MessageOnClickListener implements View.OnClickListener {
         public void onClick(View v)
         {
@@ -157,6 +177,11 @@ public class TextingActivity extends AppCompatActivity {
     {
         continueMessage=mO;
     }
+
+    /**
+     * creates message object for database, determines if message is sent,
+     * and stores the current number to make sure messages display correctly
+     */
     private void sendMessage()
     {
         String number = fixNumber(numberText.getText().toString());
@@ -214,6 +239,12 @@ public class TextingActivity extends AppCompatActivity {
         redisplayTexts();
 
     }
+
+    /**
+     * makes sure phone number is only composed of numbers
+     * @param oldString phone number
+     * @return phone number with only numbers
+     */
     private String fixNumber(String oldString)
     {
         String newString = "";
@@ -225,7 +256,12 @@ public class TextingActivity extends AppCompatActivity {
         return newString;
     }
 
-    //allows program to get contacts from phone
+    /**
+     * allows program to get contacts from phone
+     * @param requestCode query request number
+     * @param resultCode number that corresponds with result
+     * @param data intent that helps get correct data
+     */
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // TODO Auto-generated method stub
         if(resultCode == RESULT_OK){
@@ -267,6 +303,9 @@ public class TextingActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * displays recent texts from/to the current number on screen
+     */
     private void redisplayTexts()
     {
         messagesFromReceiver = messageDatabase.getMessagesByNumber(currentNumber);
@@ -289,6 +328,12 @@ public class TextingActivity extends AppCompatActivity {
         }
         pageNumber.setText(""+(page+1));
     }
+
+    /**
+     * clears text from buttons, mostly used when going to a new
+     * page of results
+     * @param startButton button to start clearing from
+     */
     private void clearTheRest(int startButton)
     {
         for(int i =  startButton; i<10; i++)
@@ -296,6 +341,10 @@ public class TextingActivity extends AppCompatActivity {
             messageButtons[i].setText("");
         }
     }
+
+    /**
+     * sets up all the buttons used for messages
+     */
     private void initializeMessageButtons()
     {
         messageButtons = new Button[10];
@@ -315,6 +364,11 @@ public class TextingActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * finds where button is in the list
+     * @param b a button
+     * @return an int 0-9 if foun, -1 if not found
+     */
     private int getButtonIndex(Button b)
     {
         for(int x = 0; x<messageButtons.length; x++)
@@ -324,6 +378,10 @@ public class TextingActivity extends AppCompatActivity {
         }
         return -1;
     }
+
+    /**
+     * actions done when the app is reopened
+     */
     protected void onResume()
     {
         if(currentNumber!=null) {
@@ -334,11 +392,19 @@ public class TextingActivity extends AppCompatActivity {
 
         super.onResume();
     }
+
+    /**
+     * actions done when app is paused
+     */
     protected void onPause()
     {
         unregisterReceiver(intentReceiver);
         super.onPause();
     }
+
+    /**
+     * stores message in draft database
+     */
     private void saveToDrafts()
     {
         String number = numberText.getText().toString();
