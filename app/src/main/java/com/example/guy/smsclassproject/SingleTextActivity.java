@@ -16,7 +16,7 @@ public class SingleTextActivity extends AppCompatActivity {
     private static MessageObject theMessage;
     private TextView singleText;
     private MessageDatabase messageDatabase;
-    private Button deleteButton;
+    protected Button deleteButton;
     private ZoomControls zoomControls;
     private float textSize;
     static private ArrayList<MessageObject> deleteFromThisList;
@@ -56,6 +56,7 @@ public class SingleTextActivity extends AppCompatActivity {
                 zoomOut();
             }
         });
+
         textSize = singleText.getTextSize();
     }
 
@@ -102,7 +103,7 @@ public class SingleTextActivity extends AppCompatActivity {
     /**
      * on screen feedback for message deletion
      */
-    private void deleteMessage()
+    protected void deleteMessage()
     {
         messageDatabase.deleteMessage(theMessage);
         if(deleteFromThisList!=null)
@@ -125,7 +126,7 @@ public class SingleTextActivity extends AppCompatActivity {
     /**
      * makes text larger when user hits zoom in
      */
-    private void zoomIn()
+    protected void zoomIn()
     {
         textSize*=1.2;
         singleText.setTextSize(textSize);
@@ -134,7 +135,7 @@ public class SingleTextActivity extends AppCompatActivity {
     /**
      * makes text smaller when user hits zoom out
      */
-    private void zoomOut()
+    protected void zoomOut()
     {
         textSize*=.8;
         singleText.setTextSize(textSize);
