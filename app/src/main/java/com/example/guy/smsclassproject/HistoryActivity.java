@@ -11,8 +11,7 @@ import android.widget.TextView;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class
-        HistoryActivity extends AppCompatActivity {
+public class HistoryActivity extends AppCompatActivity {
     Button[] messageButtons;
     Button searchButton;
     Button prevButton;
@@ -22,7 +21,12 @@ public class
     int page;
     static ArrayList<MessageObject> messagesToBeDisplayed;
     MessageDatabase messageDatabase;
+
     @Override
+    /**
+     * actions done when the activity starts
+     * @param savedInstanceState android class
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
@@ -42,6 +46,9 @@ public class
         redisplayTexts();
 
     }
+    /**
+     * sets up all the buttons used for messages
+     */
     private void initializeMessageButtons(){
         messageButtons = new Button[10];
         messageButtons[0] = (Button)findViewById(R.id.Button1);
@@ -58,6 +65,9 @@ public class
             messageButtons[x].setOnClickListener(new MessageOnClickListener());
         }
     }
+    /**
+     * Checks what button is clicked and responds accordingly
+     */
     private class MessageOnClickListener implements View.OnClickListener {
         public void onClick(View v)
         {
@@ -103,6 +113,10 @@ public class
 
         }
     }
+
+    /**
+     * calls the search by key in the database and displays the results of the search
+     */
     private void search()
     {
         messagesToBeDisplayed=messageDatabase.getMessagesByKey(searchBar.getText().toString());
@@ -134,6 +148,12 @@ public class
         }
         pageNumber.setText("" + (page + 1));
     }
+
+    /**
+     * clears text from buttons, mostly used when going to a new
+     * page of results
+     * @param startButton button to start clearing from
+     */
     private void clearTheRest(int startButton)
     {
         for(int i =  startButton; i<10; i++)
@@ -141,6 +161,10 @@ public class
             messageButtons[i].setText("");
         }
     }
+
+    /**
+     * tells activity what to do if it is closed and returned to
+     */
     protected void onResume()
     {
         if(messageButtons!=null)

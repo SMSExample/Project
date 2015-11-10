@@ -20,7 +20,12 @@ public class SingleTextActivity extends AppCompatActivity {
     private ZoomControls zoomControls;
     private float textSize;
     static private ArrayList<MessageObject> deleteFromThisList;
+
     @Override
+    /**
+     * actions done when the activity starts
+     * @param savedInstanceState android class
+     */
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
@@ -55,6 +60,9 @@ public class SingleTextActivity extends AppCompatActivity {
     }
 
     @Override
+    /**
+     * adds items to android menu
+     */
     public boolean onCreateOptionsMenu(Menu menu)
     {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -63,6 +71,9 @@ public class SingleTextActivity extends AppCompatActivity {
     }
 
     @Override
+    /**
+     * handles input for an action bar
+     */
     public boolean onOptionsItemSelected(MenuItem item)
     {
         // Handle action bar item clicks here. The action bar will
@@ -78,10 +89,19 @@ public class SingleTextActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    /**
+     * displays the message string of a given message object on screen
+     * @param mO the message object
+     */
     public static void setMessage(MessageObject mO)
     {
         theMessage = mO;
     }
+
+    /**
+     * on screen feedback for message deletion
+     */
     private void deleteMessage()
     {
         messageDatabase.deleteMessage(theMessage);
@@ -93,16 +113,27 @@ public class SingleTextActivity extends AppCompatActivity {
         singleText.setText("Message Deleted!");
 
     }
+
+    /**
+     * calls the delete method from the appropriate database to remove the message
+     */
     public static void deleteFromList(ArrayList<MessageObject> listOfMessages)
     {
         deleteFromThisList = listOfMessages;
     }
 
+    /**
+     * makes text larger when user hits zoom in
+     */
     private void zoomIn()
     {
         textSize*=1.2;
         singleText.setTextSize(textSize);
     }
+
+    /**
+     * makes text smaller when user hits zoom out
+     */
     private void zoomOut()
     {
         textSize*=.8;
