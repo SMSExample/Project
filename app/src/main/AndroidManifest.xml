@@ -60,7 +60,7 @@
 
         <activity
             android:name=".SingleTextActivity"
-            android:label="@string/title_activity_single_text" >
+            android:label="Message" >
         </activity>
     </application>
 
