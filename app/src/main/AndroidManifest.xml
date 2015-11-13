@@ -60,7 +60,7 @@
 
         <activity
             android:name=".SingleTextActivity"
-            android:label="Message" >//http://stackoverflow.com/questions/2198410/how-to-change-title-of-activity-in-android--Tian
+            android:label="@string/title_activity_single_text" >
         </activity>
     </application>
 
