@@ -50,6 +50,7 @@
             android:name=".TextingActivity"
             android:label="Texting"
             android:windowSoftInputMode="adjustPan" > <!-- stops keyboard from messing up layout -->
+            <uses-permission android:name="android.permission.READ_CONTACTS" />
         </activity>
 
         <receiver android:name=".SmsReceiver" >

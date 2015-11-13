@@ -16,7 +16,7 @@ import android.widget.TextView;
 import java.util.*;
 
 /**
- * Created by Isaac on 11/5/2015.
+ * Created by gamalieljrz on 11/5/2015.
  */
 public class HistoryActivityTest
         extends ActivityInstrumentationTestCase2 <HistoryActivity> {
@@ -67,7 +67,7 @@ public class HistoryActivityTest
     public void testSearchByMessageContent(){
         searchBar.setText("hey");
         searchButton.performClick();
-        messagesToBeDisplayed = testdraftDatabase.getMessagesByKey(
+        tester.messagesToBeDisplayed = testdraftDatabase.getMessagesByKey(
                searchBar.getText().toString());
        assertEquals("hey",messagesearch1.getSmsMessage()); //Equal if text message has the word hey.
     }
