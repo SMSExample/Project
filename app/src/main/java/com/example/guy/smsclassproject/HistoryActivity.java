@@ -20,7 +20,7 @@ public class HistoryActivity extends AppCompatActivity {
     TextView pageNumber;
     int page;
     static ArrayList<MessageObject> messagesToBeDisplayed;
-    MessageDatabase messageDatabase;
+    public MessageDatabase messageDatabase;
 
     @Override
     /**
