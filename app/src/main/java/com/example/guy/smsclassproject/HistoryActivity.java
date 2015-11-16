@@ -12,14 +12,14 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class HistoryActivity extends AppCompatActivity {
-    Button[] messageButtons;
-    Button searchButton;
-    Button prevButton;
-    Button nextButton;
-    EditText searchBar;
-    TextView pageNumber;
-    int page;
-    static ArrayList<MessageObject> messagesToBeDisplayed;
+    public Button[] messageButtons;
+    public Button searchButton;
+    public Button prevButton;
+    public Button nextButton;
+    public EditText searchBar;
+    public TextView pageNumber;
+    public int page;
+    public static ArrayList<MessageObject> messagesToBeDisplayed;
     public MessageDatabase messageDatabase;
 
     @Override
