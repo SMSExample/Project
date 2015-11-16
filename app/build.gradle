@@ -9,7 +9,8 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
-        testApplicationId 'com.example.guy.smsclassproject'
+        testApplicationId 'com.example.guy.smsclassprojecttest'
+
 
     }
     buildTypes {
@@ -26,10 +27,9 @@ android {
     }
 
     defaultConfig
-    {
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-    }
-
+            {
+                testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+            }
 }
 
 
@@ -41,5 +41,5 @@ dependencies {
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.0'
     androidTestCompile 'com.android.support.test:testing-support-lib:0.1'
     testCompile 'junit:junit:4.12'
-    androidTestCompile 'com.android.support.test:rules:0.4'
+    //
 }
