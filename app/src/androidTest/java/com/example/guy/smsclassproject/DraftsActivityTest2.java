@@ -1,6 +1,7 @@
 package com.example.guy.smsclassproject;
 
 import android.test.ActivityInstrumentationTestCase2;
+import android.test.UiThreadTest;
 import android.test.suitebuilder.annotation.SmallTest;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,12 +42,13 @@ public class DraftsActivityTest2 extends ActivityInstrumentationTestCase2<Drafts
     }
 
     @SmallTest
+    @UiThreadTest
     public void testSearch() {
 
-        searchText.setText("hi");
+        searchText.setText("sup");
         searchButton.performClick();
         messagesToBeDisplayed = draftsDatabase.getMessagesByKey(searchText.getText().toString());
-        assertEquals("Messages with the word hi", 2, messagesToBeDisplayed.size());
+        assertEquals("Messages with the word sup", 1, messagesToBeDisplayed.size());
 
     }
 }
