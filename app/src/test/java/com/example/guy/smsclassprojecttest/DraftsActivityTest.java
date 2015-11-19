@@ -1,4 +1,4 @@
-package com.example.guy.smsclassproject;
+package com.example.guy.smsclassprojecttest;
 
 import android.content.DialogInterface;
 import android.test.ActivityInstrumentationTestCase2;
@@ -12,7 +12,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.util.ArrayList;
-
+import com.example.guy.smsclassproject.*;
 /**
  * Created by ksl130230 on 11/5/2015.
  */

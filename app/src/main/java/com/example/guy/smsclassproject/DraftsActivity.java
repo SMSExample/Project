@@ -20,7 +20,7 @@ public class DraftsActivity extends AppCompatActivity {
     Button[] draftButtons;
     private int page;
     private TextView pageNumber;
-    ArrayList<MessageObject> messagesToBeDisplayed;
+    public ArrayList<MessageObject> messagesToBeDisplayed;
 
     @Override
     /**

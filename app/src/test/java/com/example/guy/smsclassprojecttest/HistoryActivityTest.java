@@ -1,4 +1,4 @@
-package com.example.guy.smsclassproject;
+package com.example.guy.smsclassprojecttesttest;
 
 import android.view.View;
 import android.widget.Button;
@@ -14,7 +14,7 @@ import android.test.ActivityInstrumentationTestCase2;
 import android.widget.EditText;
 import android.widget.TextView;
 import java.util.*;
-
+import com.example.guy.smsclassproject.*;
 /**
  * Created by gamalieljrz on 11/5/2015.
  */

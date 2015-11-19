@@ -1,4 +1,4 @@
-package com.example.guy.smsclassproject;
+package com.example.guy.smsclassprojecttest;
 
 import android.widget.Button;
 import android.widget.EditText;
@@ -8,7 +8,7 @@ import junit.framework.TestCase;
 import org.junit.Test;
 
 import java.util.ArrayList;
-
+import com.example.guy.smsclassproject.*;
 /**
  * Created by cxb120230 on 11/5/2015.
  */
@@ -42,6 +42,5 @@ public class TextingActivityTest extends TestCase
     {
 
     }
-
 
 }
