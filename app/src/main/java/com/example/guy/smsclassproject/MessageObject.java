@@ -1,5 +1,11 @@
 package com.example.guy.smsclassproject;
 
+import android.content.ContentResolver;
+import android.content.Context;
+import android.database.Cursor;
+import android.net.Uri;
+import android.provider.ContactsContract;
+
 /**
  * Created by Guy on 10/26/2015.
  */
@@ -55,6 +61,31 @@ public class MessageObject
 
     public String getNameOfContact() {
         return name;
+    }
+    /*
+ * Returns contact's id
+ */
+    public String getContactName(String phoneNumber, Context context) {
+        ContentResolver mResolver = context.getContentResolver();
+
+        Uri uri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI,
+                Uri.encode(phoneNumber));
+
+        Cursor cursor = mResolver.query(uri, new String[] {
+                ContactsContract.PhoneLookup.DISPLAY_NAME, ContactsContract.PhoneLookup._ID }, null, null, null);
+
+        String contactId = "";
+
+        if (cursor.moveToFirst()) {
+            do {
+                contactId = cursor.getString(cursor
+                        .getColumnIndex(ContactsContract.PhoneLookup.DISPLAY_NAME));
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        cursor = null;
+        return contactId;
     }
 
     /**

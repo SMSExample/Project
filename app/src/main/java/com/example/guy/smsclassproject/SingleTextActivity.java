@@ -31,7 +31,7 @@ public class SingleTextActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_text);
         if(theMessage==null)
-            theMessage=new MessageObject("","",false);
+            theMessage=new MessageObject("","",null,false);
         singleText = (TextView) findViewById(R.id.viewMessage);
         singleText.setText(theMessage.getSmsMessage());
         messageDatabase = new MessageDatabase();

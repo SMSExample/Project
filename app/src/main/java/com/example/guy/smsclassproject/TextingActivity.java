@@ -300,18 +300,14 @@ public class TextingActivity extends AppCompatActivity {
             if (message.wasSentByUser()) {
                 str = "You: ";
             }
-            else if (contactExists(getBaseContext(),message.getNumber()) == true){
-               // str = message. //name of contact
-                str += message.getSmsMessage();
-                messageButtons[i].setText(str);
+            else if (contactExists(getBaseContext(),message.getNumber())){
+                str = message.getContactName(message.getNumber(),
+                        getBaseContext()) + ": "; //name of contact, Need to Modify!!!
             }
-            else {
+            else
                 str = message.getNumber() + ": ";
-                str += message.getSmsMessage();
-                messageButtons[i].setText(str);
-            }
-
-
+            str += message.getSmsMessage();
+            messageButtons[i].setText(str);
 
         }
         pageNumber.setText("" + (page + 1));
@@ -408,31 +404,6 @@ public class TextingActivity extends AppCompatActivity {
             return true;// contact exists
         }
         return false;
-    }
-    /*
- * Returns contact's id
- */
-    private String getContactId(String phoneNumber, Context context) {
-        ContentResolver mResolver = context.getContentResolver();
-
-        Uri uri = Uri.withAppendedPath(PhoneLookup.CONTENT_FILTER_URI,
-                Uri.encode(phoneNumber));
-
-        Cursor cursor = mResolver.query(uri, new String[] {
-                PhoneLookup.DISPLAY_NAME, PhoneLookup._ID }, null, null, null);
-
-        String contactId = "";
-
-        if (cursor.moveToFirst()) {
-            do {
-                contactId = cursor.getString(cursor
-                        .getColumnIndex(PhoneLookup._ID));
-            } while (cursor.moveToNext());
-        }
-
-        cursor.close();
-        cursor = null;
-        return contactId;
     }
 
 }
