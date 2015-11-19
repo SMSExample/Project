@@ -31,9 +31,9 @@ public class DraftsActivityTest extends ActivityInstrumentationTestCase2<DraftsA
         super.setUp();
         //DraftsActivity activityMonitor = getInstrumentation().addMonitor(NextActivity.class.getName(), null, false);
         draftsDatabase = new DraftsDatabase();
-        messageObject1 = new MessageObject("hi", "5554", true);
-        messageObject2 = new MessageObject("hi hi", "5555554", true);
-        messageObject3 = new MessageObject("sup", "5435555554", true);
+        messageObject1 = new MessageObject("hi", "5554",null, true);
+        messageObject2 = new MessageObject("hi hi", "5555554",null, true);
+        messageObject3 = new MessageObject("sup", "5435555554",null, true);
         draftsDatabase.addMessage(messageObject1);
         draftsDatabase.addMessage(messageObject2);
         draftsDatabase.addMessage(messageObject3);

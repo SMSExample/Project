@@ -28,9 +28,9 @@ public class DraftsActivityTest2 extends ActivityInstrumentationTestCase2<Drafts
     public void setUp() throws Exception
     {
         draftsDatabase = new DraftsDatabase();
-        MessageObject messageObject1 = new MessageObject("hi", "5554", true);
-        MessageObject messageObject2 = new MessageObject("hi hi", "5555554", true);
-        MessageObject messageObject3 = new MessageObject("sup", "5435555554", true);
+        MessageObject messageObject1 = new MessageObject("hi", "5554",null, true);
+        MessageObject messageObject2 = new MessageObject("hi hi", "5555554",null, true);
+        MessageObject messageObject3 = new MessageObject("sup", "5435555554",null, true);
         draftsDatabase.addMessage(messageObject1);
         draftsDatabase.addMessage(messageObject2);
         draftsDatabase.addMessage(messageObject3);

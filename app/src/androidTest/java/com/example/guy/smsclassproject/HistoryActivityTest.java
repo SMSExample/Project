@@ -38,9 +38,9 @@ public class HistoryActivityTest
         super.setUp();
         tester = new HistoryActivity();
         testdraftDatabase = new DraftsDatabase();
-        messagesearch1 = new MessageObject("hey","5556", true);
+        messagesearch1 = new MessageObject("hey","5556",null, true);
         testdraftDatabase.addMessage(messagesearch1);
-        numbersearch = new MessageObject("Meet me there","5554",false);
+        numbersearch = new MessageObject("Meet me there","5554",null,false);
         testdraftDatabase.addMessage(numbersearch);
 
         messagesToBeDisplayed = testdraftDatabase.getAllTexts();
