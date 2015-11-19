@@ -36,8 +36,8 @@ public class DraftsActivityTest2 extends ActivityInstrumentationTestCase2<Drafts
         messagesToBeDisplayed = draftsDatabase.getAllTexts();
         tester = getActivity();
         messagesToBeDisplayed = tester.messagesToBeDisplayed;
-        //searchText = (EditText) tester.findViewById(R.id.searchText);
-        //searchButton = (Button) tester.findViewById(R.id.searchButton);
+        searchText = (EditText) tester.findViewById(R.id.searchText);
+        searchButton = (Button) tester.findViewById(R.id.searchButton);
     }
 
     @SmallTest
@@ -46,8 +46,7 @@ public class DraftsActivityTest2 extends ActivityInstrumentationTestCase2<Drafts
         searchText.setText("hi");
         searchButton.performClick();
         messagesToBeDisplayed = draftsDatabase.getMessagesByKey(searchText.getText().toString());
-        assertEquals(4, 3);
         assertEquals("Messages with the word hi", 2, messagesToBeDisplayed.size());
-        assertTrue(false);
+
     }
 }
