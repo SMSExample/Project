@@ -1,6 +1,8 @@
 package com.example.guy.smsclassproject;
 
 import android.test.ActivityInstrumentationTestCase2;
+import android.test.UiThreadTest;
+import android.test.suitebuilder.annotation.SmallTest;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -31,7 +33,7 @@ public class HistoryActivityTest
         super(HistoryActivity.class);
     }
 
-    @Before
+    @Override
     public void setUp() throws Exception {
         super.setUp();
         tester = new HistoryActivity();
@@ -49,14 +51,16 @@ public class HistoryActivityTest
         //nextButton = (Button) tester.findViewById(R.id.nextButton);
     }
 
-    @Test
+    @SmallTest
+    @UiThreadTest
     public void testButtons(){
         // Verifying the button exists.
         assertNotNull(tester.searchButton);
         assertNotNull(tester.prevButton);
         assertNotNull(tester.nextButton);
     }
-    @Test
+    @SmallTest
+    @UiThreadTest
 
     public void testSearchByMessageContent(){
         searchBar.setText("hey");
