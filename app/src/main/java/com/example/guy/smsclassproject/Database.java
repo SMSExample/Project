@@ -1,8 +1,5 @@
 
 package com.example.guy.smsclassproject;
-import android.os.Message;
-import com.example.guy.smsclassproject.MessageObject;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 public class Database
@@ -12,8 +9,7 @@ public class Database
 
     public Database()
     {
-        messages = new HashMap<>();
-        messagesInOrder = new ArrayList<>();
+        clearData();
     }
 
     /**
@@ -121,5 +117,14 @@ public class Database
     public ArrayList<MessageObject> getAllTexts()
     {
         return messagesInOrder;
+    }
+
+    /**
+     * Erases all the data from the database.
+     */
+    public void clearData()
+    {
+        messages = new HashMap<>();
+        messagesInOrder = new ArrayList<>();
     }
 }

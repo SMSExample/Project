@@ -73,4 +73,12 @@ public class DraftsDatabase
     {
         return draftData.getAllTexts();
     }
+
+    /**
+     * Erases all the data from the database.
+     */
+    public void clearData()
+    {
+        draftData.clearData();
+    }
 }

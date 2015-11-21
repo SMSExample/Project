@@ -7,15 +7,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import org.junit.Before;
-import org.junit.Test;
-
 import java.util.ArrayList;
 /**
  * Created by Isaac on 11/5/2015.
  */
-public class HistoryActivityTest
-        extends ActivityInstrumentationTestCase2 <HistoryActivity> {
+public class HistoryActivityTest extends ActivityInstrumentationTestCase2 <HistoryActivity> {
 
     private HistoryActivity tester;
     private Button[] messageButtons;
@@ -24,7 +20,7 @@ public class HistoryActivityTest
     private Button nextButton;
     private EditText searchBar;
     private TextView pagenumber;
-    private DraftsDatabase testdraftDatabase;
+    private MessageDatabase testMessageDatabase;
     private MessageObject messagesearch1;
     private MessageObject numbersearch;
     ArrayList<MessageObject> messagesToBeDisplayed;
@@ -36,14 +32,15 @@ public class HistoryActivityTest
     @Override
     public void setUp() throws Exception {
         super.setUp();
-        tester = new HistoryActivity();
-        testdraftDatabase = new DraftsDatabase();
+        tester = getActivity();
+        testMessageDatabase = new MessageDatabase();
+        testMessageDatabase.clearData();
         messagesearch1 = new MessageObject("hey","5556",null, true);
-        testdraftDatabase.addMessage(messagesearch1);
+        testMessageDatabase.addMessage(messagesearch1);
         numbersearch = new MessageObject("Meet me there","5554",null,false);
-        testdraftDatabase.addMessage(numbersearch);
+        testMessageDatabase.addMessage(numbersearch);
 
-        messagesToBeDisplayed = testdraftDatabase.getAllTexts();
+        messagesToBeDisplayed = testMessageDatabase.getAllTexts();
         messagesToBeDisplayed = tester.messagesToBeDisplayed;
         searchBar = (EditText) tester.findViewById(R.id.searchKeyWord);
         searchButton = (Button) tester.findViewById(R.id.searchButton);
@@ -59,15 +56,14 @@ public class HistoryActivityTest
         assertNotNull(tester.prevButton);
         assertNotNull(tester.nextButton);
     }
+
     @SmallTest
     @UiThreadTest
-
     public void testSearchByMessageContent(){
         searchBar.setText("hey");
         searchButton.performClick();
-        messagesToBeDisplayed = testdraftDatabase.getMessagesByKey(
-                searchBar.getText().toString());
-        assertEquals("hey",messagesearch1.getSmsMessage()); //Equal if text message has the word hey.
+        messagesToBeDisplayed = tester.messagesToBeDisplayed;
+        assertEquals(1,messagesToBeDisplayed.size()); //This tests to see if the size of the list is only 1.
     }
 
 }

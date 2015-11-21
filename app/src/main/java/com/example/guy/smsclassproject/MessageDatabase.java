@@ -74,4 +74,12 @@ public class MessageDatabase
     {
         return smsData.getAllTexts();
     }
+
+    /**
+     * Erases all the data from the database.
+     */
+    public void clearData()
+    {
+        smsData.clearData();
+    }
 }
