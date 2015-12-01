@@ -45,10 +45,10 @@ public class DraftsActivityTest2 extends ActivityInstrumentationTestCase2<Drafts
     @UiThreadTest
     public void testSearch() {
 
-        searchText.setText("sup");
+        searchText.setText("hi");
         searchButton.performClick();
-        messagesToBeDisplayed = draftsDatabase.getMessagesByKey(searchText.getText().toString());
-        assertEquals("Messages with the word sup", 1, messagesToBeDisplayed.size());
+        messagesToBeDisplayed = tester.messagesToBeDisplayed;
+        assertEquals("Messages with the word sup", 2, messagesToBeDisplayed.size());
 
     }
 }

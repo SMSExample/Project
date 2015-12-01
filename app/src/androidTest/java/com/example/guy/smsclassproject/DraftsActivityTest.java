@@ -1,11 +1,10 @@
 package com.example.guy.smsclassproject;
 
 import android.test.ActivityInstrumentationTestCase2;
+import android.test.UiThreadTest;
+import android.test.suitebuilder.annotation.SmallTest;
 import android.widget.Button;
 import android.widget.EditText;
-
-import org.junit.BeforeClass;
-import org.junit.Test;
 
 import java.util.ArrayList;
 /**
@@ -26,7 +25,7 @@ public class DraftsActivityTest extends ActivityInstrumentationTestCase2<DraftsA
         super(DraftsActivity.class);
     }
 
-    @BeforeClass
+    @Override
     public void setUp() throws Exception {
         super.setUp();
         //DraftsActivity activityMonitor = getInstrumentation().addMonitor(NextActivity.class.getName(), null, false);
@@ -38,7 +37,7 @@ public class DraftsActivityTest extends ActivityInstrumentationTestCase2<DraftsA
         draftsDatabase.addMessage(messageObject2);
         draftsDatabase.addMessage(messageObject3);
         messagesToBeDisplayed = draftsDatabase.getAllTexts();
-        tester = new DraftsActivity();                                  //getActivity();
+        tester = getActivity();
         messagesToBeDisplayed = tester.messagesToBeDisplayed;
         searchText = (EditText) tester.findViewById(R.id.searchText);
         searchButton = (Button) tester.findViewById(R.id.searchButton);
@@ -46,26 +45,27 @@ public class DraftsActivityTest extends ActivityInstrumentationTestCase2<DraftsA
     }
 
 
-    @Test
+    @SmallTest
+    @UiThreadTest
     public void testSearch() {
         searchText.setText("hi");
         searchButton.performClick();
-        messagesToBeDisplayed = draftsDatabase.getMessagesByKey(searchText.getText().toString());
+        messagesToBeDisplayed = tester.messagesToBeDisplayed;
         assertEquals("Messages with the word hi", 2, messagesToBeDisplayed.size());
 
         searchText.setText("sup");
         searchButton.performClick();
-        messagesToBeDisplayed = draftsDatabase.getMessagesByKey(searchText.getText().toString());
+        messagesToBeDisplayed = tester.messagesToBeDisplayed;
         assertEquals("Messages with the word sup", 1, messagesToBeDisplayed.size());
 
         searchText.setText("yo");
         searchButton.performClick();
-        messagesToBeDisplayed = draftsDatabase.getMessagesByKey(searchText.getText().toString());
+        messagesToBeDisplayed = tester.messagesToBeDisplayed;
         assertEquals("Messages with the word yo", 0, messagesToBeDisplayed.size());
 
         searchText.setText("i");
         searchButton.performClick();
-        messagesToBeDisplayed = draftsDatabase.getMessagesByKey(searchText.getText().toString());
+        messagesToBeDisplayed = tester.messagesToBeDisplayed;
         assertEquals("Messages with the word i", 2, messagesToBeDisplayed.size());
 
     }
