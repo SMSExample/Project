@@ -6,10 +6,11 @@ import android.test.suitebuilder.annotation.SmallTest;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import org.junit.*;
 
 import java.util.ArrayList;
 /**
- * Created by Isaac on 11/5/2015.
+ * Created by gamalieljrz on 11/5/2015.
  */
 public class HistoryActivityTest extends ActivityInstrumentationTestCase2 <HistoryActivity> {
 
@@ -29,7 +30,7 @@ public class HistoryActivityTest extends ActivityInstrumentationTestCase2 <Histo
         super(HistoryActivity.class);
     }
 
-    @Override
+    @BeforeClass
     public void setUp() throws Exception {
         //super.setUp();
 
@@ -46,8 +47,7 @@ public class HistoryActivityTest extends ActivityInstrumentationTestCase2 <Histo
         nextButton = (Button) tester.findViewById(R.id.nextButton);
     }
 
-    @SmallTest
-    @UiThreadTest
+    @Test
     public void testButtons(){
         // Verifying the button exists.
         assertNotNull(tester.searchButton);
@@ -55,8 +55,7 @@ public class HistoryActivityTest extends ActivityInstrumentationTestCase2 <Histo
         assertNotNull(tester.nextButton);
     }
 
-    @SmallTest
-    @UiThreadTest
+    @Test
     public void testSearchByMessageContent(){
         searchBar.setText("hey");
         searchButton.performClick();
