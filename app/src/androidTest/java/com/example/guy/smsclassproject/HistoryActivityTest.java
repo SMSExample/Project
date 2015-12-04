@@ -31,21 +31,19 @@ public class HistoryActivityTest extends ActivityInstrumentationTestCase2 <Histo
 
     @Override
     public void setUp() throws Exception {
-        super.setUp();
-        tester = getActivity();
+        //super.setUp();
+
         testMessageDatabase = new MessageDatabase();
         testMessageDatabase.clearData();
         messagesearch1 = new MessageObject("hey","5556",null, true);
-        testMessageDatabase.addMessage(messagesearch1);
         numbersearch = new MessageObject("Meet me there","5554",null,false);
+        testMessageDatabase.addMessage(messagesearch1);
         testMessageDatabase.addMessage(numbersearch);
-
-        messagesToBeDisplayed = testMessageDatabase.getAllTexts();
-        messagesToBeDisplayed = tester.messagesToBeDisplayed;
+        tester = getActivity();
         searchBar = (EditText) tester.findViewById(R.id.searchKeyWord);
         searchButton = (Button) tester.findViewById(R.id.searchButton);
-        //prevButton = (Button) tester.findViewById(R.id.prevButton);
-        //nextButton = (Button) tester.findViewById(R.id.nextButton);
+        prevButton = (Button) tester.findViewById(R.id.prevButton);
+        nextButton = (Button) tester.findViewById(R.id.nextButton);
     }
 
     @SmallTest
