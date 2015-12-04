@@ -8,11 +8,9 @@
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
 
     <application
         android:allowBackup="true"
@@ -22,7 +20,9 @@
         android:theme="@style/AppTheme" >
 
         <!-- main menu -->
-        <activity android:name=".MenuActivity" android:label="SMS">
+        <activity
+            android:name=".MenuActivity"
+            android:label="SMS" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,16 +31,17 @@
         </activity>
 
         <!-- Drafts -->
-        <activity android:name=".DraftsActivity"
+        <activity
+            android:name=".DraftsActivity"
             android:label="Drafts"
-            android:windowSoftInputMode="adjustPan"> <!-- stops keyboard from messing up layout -->
+            android:windowSoftInputMode="adjustPan" > <!-- stops keyboard from messing up layout -->
         </activity>
 
         <!-- History -->
         <activity
             android:name=".HistoryActivity"
             android:label="Recent Texts"
-            android:windowSoftInputMode="adjustPan"> <!-- stops keyboard from messing up layout -->
+            android:windowSoftInputMode="adjustPan" > <!-- stops keyboard from messing up layout -->
         </activity>
 
         <!-- Texts -->
@@ -59,7 +60,12 @@
 
         <activity
             android:name=".SingleTextActivity"
-            android:label="Message" >//http://stackoverflow.com/questions/2198410/how-to-change-title-of-activity-in-android--Tian
+            android:label="Message" >
+//http://stackoverflow.com/questions/2198410/how-to-change-title-of-activity-in-android--Tian
+        </activity>
+        <activity
+            android:name=".ConversationActivity"
+            android:label="@string/title_activity_conversation" >
         </activity>
     </application>
 

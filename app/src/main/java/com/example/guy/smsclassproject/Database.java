@@ -24,7 +24,7 @@ public class Database
             messages.put(num,this.getExistingNumber(num));
         }
             messages.get(num).add(0,mO);
-        messagesInOrder.add(0,mO);
+        messagesInOrder.add(0, mO);
     }
 
     /**
@@ -126,5 +126,29 @@ public class Database
     {
         messages = new HashMap<>();
         messagesInOrder = new ArrayList<>();
+    }
+
+    /**
+     * This method determines if two numbers are the same.
+     * @param num1 the first number to be compaired.
+     * @param num2 the second number to be compaired.
+     * @return true if the numbers are the same.
+     */
+    public static boolean isSameNumber(String num1, String num2)
+    {
+        if(num1.length()<num2.length())
+        {
+            String shortenedVersion = num2.substring(num2.length()-num1.length());
+            if(shortenedVersion.equals(num1))
+                return true;
+        }
+        else
+        {
+            String shortenedVersion = num1.substring(num1.length()-num2.length());
+            if(shortenedVersion.equals(num2))
+                return true;
+        }
+        return false;
+
     }
 }

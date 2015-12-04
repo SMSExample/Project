@@ -19,6 +19,7 @@ public class MenuActivity extends Activity {
     private Button toDrafts;
     private Button toHistory;
     private Button toTexting;
+    private Button toConversations;
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
@@ -81,6 +82,13 @@ public class MenuActivity extends Activity {
                 goToTexting();
             }
         });
+        toConversations = (Button) findViewById(R.id.goToConversations);
+        toConversations.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                goToConversations();
+            }
+        });
     }
     //called when user touch the button, learned from http://developer.android.com/guide/topics/ui/controls/button.html
     /**
@@ -105,5 +113,10 @@ public class MenuActivity extends Activity {
      */
     public void goToTexting(){
         startActivity(new Intent(MenuActivity.this, TextingActivity.class));
+    }
+
+    public void goToConversations()
+    {
+        startActivity(new Intent(MenuActivity.this, ConversationActivity.class));
     }
 }

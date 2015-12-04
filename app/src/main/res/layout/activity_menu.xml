@@ -30,6 +30,18 @@
         android:backgroundTint="@color/colorPrimary"
         android:id="@+id/goToDrafts"
         android:onClick="goToDrafts"
+        android:layout_below="@+id/goToConversations"
+        android:layout_centerHorizontal="true" />
+
+    //button that goes to conversation view
+    <Button
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:text="Conversation view"
+        android:textColor="@android:color/white"
+        android:backgroundTint="@color/colorPrimary"
+        android:id="@+id/goToConversations"
+        android:onClick="goToConversations"
         android:layout_below="@+id/textButton"
         android:layout_centerHorizontal="true" />
 
