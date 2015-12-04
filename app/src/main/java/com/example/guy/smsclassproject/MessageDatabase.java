@@ -1,10 +1,12 @@
 package com.example.guy.smsclassproject;
+import android.support.v7.app.AppCompatActivity;
+
 import java.util.ArrayList;
 
 /**
  * Created by Guy on 10/27/2015.
  */
-public class MessageDatabase
+public class MessageDatabase extends AppCompatActivity
 {
     private static Database smsData;
 
