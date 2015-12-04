@@ -1,5 +1,6 @@
 package com.example.guy.smsclassproject;
 
+import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.database.Cursor;
@@ -9,7 +10,7 @@ import android.provider.ContactsContract;
 /**
  * Created by Guy on 10/26/2015.
  */
-public class MessageObject
+public class MessageObject extends Activity
 {
     private String smsMessage;
     private String num;
