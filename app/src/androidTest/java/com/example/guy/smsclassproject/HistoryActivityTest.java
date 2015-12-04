@@ -45,8 +45,8 @@ public class HistoryActivityTest extends ActivityInstrumentationTestCase2 <Histo
         messagesToBeDisplayed = tester.messagesToBeDisplayed;
         searchBar = (EditText) tester.findViewById(R.id.searchKeyWord);
         searchButton = (Button) tester.findViewById(R.id.searchButton);
-        //prevButton = (Button) tester.findViewById(R.id.prevButton);
-        //nextButton = (Button) tester.findViewById(R.id.nextButton);
+        prevButton = (Button) tester.findViewById(R.id.prevButton);
+        nextButton = (Button) tester.findViewById(R.id.nextButton);
     }
 
     @Test
