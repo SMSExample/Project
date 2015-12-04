@@ -59,11 +59,7 @@ public class TextingActivity extends AppCompatActivity {
          * @param intent android class
          */
         public void onReceive(Context context, Intent intent) {
-            String textMessage = intent.getExtras().getString("sms");
-            String message = textMessage.substring(textMessage.indexOf(':') + 2);
-            number = textMessage.substring(0, textMessage.indexOf(':'));
-            messageDatabase.addMessage(new MessageObject(message, number, null, false));
-
+            number = intent.getExtras().getString("sms");
             if (isSameNumber())
                 redisplayTexts();
         }
@@ -238,7 +234,6 @@ public class TextingActivity extends AppCompatActivity {
 
         sms.sendTextMessage(number, null, message, sendPI, deliveredPI);
         currentNumber = number;
-        System.out.println(currentNumber);
         redisplayTexts();
 
     }
