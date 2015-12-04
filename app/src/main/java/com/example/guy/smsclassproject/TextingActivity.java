@@ -334,6 +334,15 @@ public class TextingActivity extends AppCompatActivity {
         }
         pageNumber.setText("" + (page + 1));
     }
+
+    /**
+     * This method get the original phone number of the sender
+     * and format it into the style of xxxx or xxx-xxxx or (xxx)xxx-xxxx
+     * or +xx(xxx)xxx-xxxx
+     * @auther Guy Maor and Tian Zheng
+     * @param oldNumber the original phone number of the sender
+     * @return the formated phone number to be displayed
+     */
     public static String formatedNumber(String oldNumber)
     {
         int numLength = oldNumber.length();
