@@ -62,7 +62,7 @@ public class Database
         ArrayList<MessageObject> messagesThatContainKey = new ArrayList<>();
         for(MessageObject message : messagesInOrder)
         {
-            if(message.getSmsMessage().indexOf(key)!=-1)
+            if((message.getSmsMessage().toLowerCase()).indexOf(key.toLowerCase())!=-1)
                 messagesThatContainKey.add(message);
         }
         return messagesThatContainKey;

@@ -327,12 +327,38 @@ public class TextingActivity extends AppCompatActivity {
                         getBaseContext()) + ": "; //name of contact, Need to Modify!!!
             }
             else
-                str = message.getNumber() + ": ";
+                str = formatedNumber(message.getNumber()) + ": ";
             str += message.getSmsMessage();
             messageButtons[i].setText(str);
 
         }
         pageNumber.setText("" + (page + 1));
+    }
+    public static String formatedNumber(String oldNumber)
+    {
+        int numLength = oldNumber.length();
+        if(numLength<=4)
+        {
+            return oldNumber;
+        }
+        if(numLength>4&&numLength<=7)
+        {
+            String firstNumber = oldNumber.substring(0, numLength-4);
+            String secondNumber = oldNumber.substring(numLength-4);
+            return  firstNumber + "-" + secondNumber;
+        }
+        if(numLength>7&&numLength<=10)
+        {
+            String firstNumber = oldNumber.substring(0, numLength-7);
+            String secondNumber = oldNumber.substring(numLength-7, numLength-4);
+            String thirdNumber = oldNumber.substring(numLength-4);
+            return "(" + firstNumber + ")" + secondNumber + "-" + thirdNumber;
+        }
+        String firstNumber = oldNumber.substring(0, numLength-10);
+        String secondNumber = oldNumber.substring(numLength-10, numLength-7);
+        String thirdNumber = oldNumber.substring(numLength-7, numLength-4);
+        String fourthNumber = oldNumber.substring(numLength - 4);
+        return "+" + firstNumber + "(" + secondNumber + ")" + thirdNumber + "-" + fourthNumber;
     }
 
     /**

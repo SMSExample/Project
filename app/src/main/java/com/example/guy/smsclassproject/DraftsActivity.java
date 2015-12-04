@@ -139,7 +139,7 @@ public class DraftsActivity extends AppCompatActivity {
                 break;
             }
             MessageObject message = messagesToBeDisplayed.get(i+10*page);
-            String str = message.getNumber()+": ";
+            String str = TextingActivity.formatedNumber(message.getNumber())+": ";
             str +=message.getSmsMessage();
             draftButtons[i].setText(str);
         }

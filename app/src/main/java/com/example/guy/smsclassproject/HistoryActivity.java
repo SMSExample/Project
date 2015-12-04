@@ -142,7 +142,7 @@ public class HistoryActivity extends AppCompatActivity {
             if(message.wasSentByUser())
                 str ="You: ";
             else
-                str = message.getNumber()+": ";
+                str = TextingActivity.formatedNumber(message.getNumber())+": ";
             str +=message.getSmsMessage();
             messageButtons[i].setText(str);
         }
