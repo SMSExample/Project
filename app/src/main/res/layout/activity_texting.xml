@@ -87,8 +87,7 @@
                 android:id="@+id/textButton1"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
-                android:background="@android:color/white"
-                android:text=""/>
+                android:background="@android:color/white"/>
 
             <Button
                 android:layout_width="fill_parent"

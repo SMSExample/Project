@@ -73,6 +73,7 @@ public class DraftsActivity extends AppCompatActivity {
         draftButtons[9] = (Button)findViewById(R.id.textButton10);
         for(Button button : draftButtons)
         {
+            button.setTransformationMethod(null);
             button.setOnClickListener(new MessageOnClickListener());
         }
     }

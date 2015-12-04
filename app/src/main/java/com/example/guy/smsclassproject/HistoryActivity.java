@@ -62,6 +62,7 @@ public class HistoryActivity extends AppCompatActivity {
         messageButtons[8] = (Button)findViewById(R.id.Button9);
         messageButtons[9] = (Button)findViewById(R.id.Button10);
         for(int x = 0; x<10; x++){
+            messageButtons[x].setTransformationMethod(null);
             messageButtons[x].setOnClickListener(new MessageOnClickListener());
         }
     }

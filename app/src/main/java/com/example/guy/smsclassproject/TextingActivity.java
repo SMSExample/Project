@@ -398,6 +398,7 @@ public class TextingActivity extends AppCompatActivity {
         messageButtons[8] = (Button) findViewById(R.id.textButton9);
         messageButtons[9] = (Button) findViewById(R.id.textButton10);
         for (Button button : messageButtons) {
+            button.setTransformationMethod(null);
             button.setOnClickListener(new MessageOnClickListener());
         }
     }
