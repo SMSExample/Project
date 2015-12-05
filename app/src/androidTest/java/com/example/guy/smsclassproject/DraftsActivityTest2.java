@@ -1,5 +1,6 @@
 package com.example.guy.smsclassproject;
 
+import android.os.Looper;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.UiThreadTest;
 import android.test.suitebuilder.annotation.SmallTest;
@@ -25,9 +26,15 @@ public class DraftsActivityTest2 extends ActivityInstrumentationTestCase2<Drafts
     }
 
     @Override
+    @UiThreadTest
     public void setUp() throws Exception
     {
+        if (Looper.myLooper() == null)
+        {
+            Looper.prepare();
+        }
         draftsDatabase = new DraftsDatabase();
+        draftsDatabase.clearData();
         MessageObject messageObject1 = new MessageObject("hi", "5554",null, true);
         MessageObject messageObject2 = new MessageObject("hi hi", "5555554",null, true);
         MessageObject messageObject3 = new MessageObject("sup", "5435555554",null, true);
