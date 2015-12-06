@@ -60,7 +60,7 @@ public class ConversationActivityTest extends ActivityInstrumentationTestCase2 <
 
     @SmallTest
     @UiThreadTest
-    public void testShouldAddMessage() {
+    public void testShouldAddMessage() { //testing if the conversations are actually created correctly
 
         assertNotNull(tester.correspondentButtons[0]);
         String buttonText0 = correspondentButtons[0].getText().toString();
