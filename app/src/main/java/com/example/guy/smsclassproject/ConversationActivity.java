@@ -21,6 +21,11 @@ public class ConversationActivity extends AppCompatActivity {
 
     public ArrayList<MessageObject> messagesToBeDisplayed;
 
+    /**
+     * Find all the Views of the MenuActivity.xml and give all the Buttons their
+     * onClickListeners
+     * @Param savedInstanceState The Bundle that is needed to call the super.onCreate().
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +38,9 @@ public class ConversationActivity extends AppCompatActivity {
         initializeMessageButtons();
     }
 
+    /**
+     * assigns actions to all the buttons
+     */
     private class MessageOnClickListener implements View.OnClickListener {
         public void onClick(View v)
         {
@@ -72,6 +80,10 @@ public class ConversationActivity extends AppCompatActivity {
 
         }
     }
+
+    /**
+     * creates and sets up the buttons used to display the conversations
+     */
     private void initializeMessageButtons()
     {
         correspondentButtons = new Button[10];
@@ -92,6 +104,9 @@ public class ConversationActivity extends AppCompatActivity {
         }
     }
     @Override
+    /**
+     * adds options to the mnu
+     */
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_conversation, menu);
@@ -99,6 +114,9 @@ public class ConversationActivity extends AppCompatActivity {
     }
 
     @Override
+    /**
+     * adds options to the mnu
+     */
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -112,6 +130,9 @@ public class ConversationActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+    /**
+     * What the page does of closed and reopened
+     */
     protected void onResume()
     {
         if(messageDatabase==null)
@@ -129,6 +150,11 @@ public class ConversationActivity extends AppCompatActivity {
         redisplayTexts();
         super.onResume();
     }
+
+    /**
+     * determines if number is one that needs to be added to conversation view
+     * @Param numbers, an array list of the phone numers. messageObject is the message being checked
+     */
     private boolean shouldAddMessage(ArrayList<String> numbers, MessageObject messageObject)
     {
         String messageNumber = messageObject.getNumber();
@@ -139,7 +165,7 @@ public class ConversationActivity extends AppCompatActivity {
     }
 
     /**
-     * displays drafts in groups of ten
+     * displays messages in groups of ten
      */
     private void redisplayTexts()
     {
