@@ -6,8 +6,7 @@ import android.test.suitebuilder.annotation.SmallTest;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import org.junit.*;
-
+import android.os.Looper;
 import java.util.ArrayList;
 /**
  * Created by gamalieljrz on 11/5/2015.
@@ -30,10 +29,16 @@ public class HistoryActivityTest extends ActivityInstrumentationTestCase2 <Histo
         super(HistoryActivity.class);
     }
 
-    @BeforeClass
-    public void setUp() throws Exception {
+    @Override
+    @UiThreadTest
+    public void setUp() throws Exception
+    {
         //super.setUp();
 
+        if (Looper.myLooper() == null)
+        {
+            Looper.prepare();
+        }
         testMessageDatabase = new MessageDatabase();
         testMessageDatabase.clearData();
         messagesearch1 = new MessageObject("hey","5556",null, true);
@@ -47,7 +52,8 @@ public class HistoryActivityTest extends ActivityInstrumentationTestCase2 <Histo
         nextButton = (Button) tester.findViewById(R.id.nextButton);
     }
 
-    @Test
+    @SmallTest
+    @UiThreadTest
     public void testButtons(){
         // Verifying the button exists.
         assertNotNull(tester.searchButton);
@@ -55,7 +61,8 @@ public class HistoryActivityTest extends ActivityInstrumentationTestCase2 <Histo
         assertNotNull(tester.nextButton);
     }
 
-    @Test
+    @SmallTest
+    @UiThreadTest
     public void testSearchByMessageContent(){
         searchBar.setText("hey");
         searchButton.performClick();
