@@ -19,6 +19,10 @@ public class MenuActivity extends Activity {
     private Button toConversations;
 
     @Override
+    /**
+     * Gets permissons needed for the app when the app opens
+     *  @Param info needed to access specific premission
+     */
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode){
@@ -112,6 +116,10 @@ public class MenuActivity extends Activity {
         startActivity(new Intent(MenuActivity.this, TextingActivity.class));
     }
 
+    /**
+     * Start a new Activity "Conversations", and takes the user to there.
+     *
+     */
     public void goToConversations()
     {
         startActivity(new Intent(MenuActivity.this, ConversationActivity.class));
