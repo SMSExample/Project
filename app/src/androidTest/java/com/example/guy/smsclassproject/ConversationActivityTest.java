@@ -62,14 +62,17 @@ public class ConversationActivityTest extends ActivityInstrumentationTestCase2 <
     @UiThreadTest
     public void testShouldAddMessage() { //testing if the conversations are actually created correctly
 
+        messagesToBeDisplayed = tester.messagesToBeDisplayed;
+        assertEquals("Number of conversations", 2, messagesToBeDisplayed.size());
+
         assertNotNull(tester.correspondentButtons[0]);
         String buttonText0 = correspondentButtons[0].getText().toString();
-        if(buttonText0.equals("5554: hi"))
-            assertSame("Conversation with 5554 grouped successfully", buttonText0, messageObject1);
+        if(buttonText0.equals("5554: what's up"))
+            assertSame("Conversation with 5554 grouped successfully", buttonText0, messageObject1.toString());
 
         assertNotNull(tester.correspondentButtons[1]);
         String buttonText1 = correspondentButtons[1].getText().toString();
         if(buttonText1.equals("5435555554: sup"))
-            assertSame("Conversation with 5435555554 grouped successfully", buttonText1, messageObject3);
+            assertSame("Conversation with 5435555554 grouped successfully", buttonText1, messageObject3.toString());
     }
 }

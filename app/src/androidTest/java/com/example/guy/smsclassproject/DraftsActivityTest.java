@@ -84,12 +84,12 @@ public class DraftsActivityTest extends ActivityInstrumentationTestCase2<DraftsA
 
         String buttonText0 = draftButtons[0].getText().toString();
         if(buttonText0.equals("5555554: hi hi"))
-            assertSame("Text redisplayed on the first button", buttonText0, messageObject2); //gets the text of the current button, since the messageobject1 was in draftsButtons0 before, not it should have messageobject2
+            assertSame("Text redisplayed on the first button", buttonText0, messageObject2.toString()); //gets the text of the current button, since the messageobject1 was in draftsButtons0 before, not it should have messageobject2
 
         assertNotNull(tester.draftButtons[1]);
         String buttonText1 = draftButtons[1].getText().toString();
         if(buttonText1.equals("5435555554: sup"))
-            assertSame("Text redisplayed on the second button", buttonText1, messageObject3);
+            assertSame("Text redisplayed on the second button", buttonText1, messageObject3.toString());
 
     }
 
