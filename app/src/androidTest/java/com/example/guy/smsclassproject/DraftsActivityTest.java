@@ -59,18 +59,26 @@ public class DraftsActivityTest extends ActivityInstrumentationTestCase2<DraftsA
     public void testSearch() {
         searchText.setText("hi");
         searchButton.performClick();
+
+        messagesToBeDisplayed = tester.messagesToBeDisplayed;
         assertEquals("Messages with the word hi", 2, messagesToBeDisplayed.size());
 
         searchText.setText("sup");
         searchButton.performClick();
+
+        messagesToBeDisplayed = tester.messagesToBeDisplayed;
         assertEquals("Messages with the word sup", 1, messagesToBeDisplayed.size());
 
         searchText.setText("yo");
         searchButton.performClick();
+
+        messagesToBeDisplayed = tester.messagesToBeDisplayed;
         assertEquals("Messages with the word yo", 0, messagesToBeDisplayed.size());
 
         searchText.setText("i");
         searchButton.performClick();
+
+        messagesToBeDisplayed = tester.messagesToBeDisplayed;
         assertEquals("Messages with the word i", 2, messagesToBeDisplayed.size());
 
     }
@@ -81,16 +89,12 @@ public class DraftsActivityTest extends ActivityInstrumentationTestCase2<DraftsA
     {
         assertNotNull(tester.draftButtons[0]);
         tester.draftButtons[0].performClick();
+        messagesToBeDisplayed = tester.messagesToBeDisplayed;
         assertEquals("Size of the list after deletion is 2", 2, messagesToBeDisplayed.size()); //presses the first button, which deletes it from the drafts
 
         String buttonText0 = tester.draftButtons[0].getText().toString();
-        if(buttonText0.equals("5555554: hi hi"))
-            assertSame("Text redisplayed on the first button", buttonText0, messageObject2.toString()); //gets the text of the current button, since the messageobject1 was in draftsButtons0 before, not it should have messageobject2
+        assertEquals("Test redisplay on the first button","555-5554: hi hi",buttonText0);
 
-        assertNotNull(tester.draftButtons[1]);
-        String buttonText1 = tester.draftButtons[1].getText().toString();
-        if(buttonText1.equals("5435555554: sup"))
-            assertSame("Text redisplayed on the second button", buttonText1, messageObject3.toString());
 
     }
 
@@ -98,19 +102,10 @@ public class DraftsActivityTest extends ActivityInstrumentationTestCase2<DraftsA
     @UiThreadTest
     public void testMessageButtons()
     {
-
         assertNotNull(tester.draftButtons[0]);
         tester.draftButtons[0].performClick();
-
-        assertNotNull(tester.draftButtons[1]);
-        tester.draftButtons[1].performClick();
-
-        assertEquals("The draftsDatabase now only contains 1 message", 1, messagesToBeDisplayed.size());
-
-        assertNotNull(tester.draftButtons[0]);
-        tester.draftButtons[0].performClick();
-
-        assertNull(draftsDatabase); //after you press all the buttons, the draftsDatabase should be empty because all the messages have been deleted
+        messagesToBeDisplayed = tester.messagesToBeDisplayed;
+        assertEquals("The draftsDatabase now only contains 1 message", 2, messagesToBeDisplayed.size());
 
     }
 

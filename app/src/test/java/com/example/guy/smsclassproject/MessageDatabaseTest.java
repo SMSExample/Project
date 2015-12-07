@@ -23,6 +23,7 @@ public class MessageDatabaseTest  {
     @Before
     public void setUp() {
         tester = new MessageDatabase();
+        tester.clearData();
         messageObject1 = new MessageObject("test", "5554", null, true);
         messageObject2 = new MessageObject("test2", "5556", null, false);
         messageObject3 = new MessageObject("test21", "5554", null, false);
@@ -92,7 +93,7 @@ public class MessageDatabaseTest  {
     @Test
     public void testGetAllTexts()
     {
-        int listSize = 2;
+        int listSize = 3;
         tester.addMessage(messageObject1);
         tester.addMessage(messageObject2);
         tester.addMessage(messageObject3);

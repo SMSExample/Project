@@ -10,10 +10,10 @@ import static org.junit.Assert.assertEquals;
 /**
  * Created by gamalieljrz on 12/4/2015.
  */
-public class MessageDatabaseTest  {
+public class DatabaseTest  {
 
 
-    private MessageDatabase tester;
+    private Database tester;
     private MessageObject messageObject1;
     private MessageObject messageObject2;
     private MessageObject messageObject3;
@@ -22,7 +22,7 @@ public class MessageDatabaseTest  {
 
     @Before
     public void setUp() {
-        tester = new MessageDatabase();
+        tester = new Database();
         messageObject1 = new MessageObject("test", "5554", null, true);
         messageObject2 = new MessageObject("test2", "5556", null, false);
         messageObject3 = new MessageObject("test21", "5554", null, false);
@@ -74,7 +74,7 @@ public class MessageDatabaseTest  {
         tester.addMessage(messageObject2);
         tester.addMessage(messageObject3);
         ArrayList<MessageObject> messageList = tester.getMessagesByKey(key);
-        assertEquals("Testing Get Message By Key: ",listSize,messageList.size());//Tests get message by key.
+        assertEquals("Testing Get Message By Key: ",listSize,messageList.size());//Test get message by key
     }
 
     @Test
@@ -86,17 +86,17 @@ public class MessageDatabaseTest  {
         tester.addMessage(messageObject2);
         tester.addMessage(messageObject3);
         ArrayList<MessageObject> messageList = tester.getMessagesByNumber(number);
-        assertEquals("Testing Get Message By Number: ",listSize,messageList.size());//Tests get message by number
+        assertEquals("Testing Get Message By Number: ",listSize,messageList.size());//Test get message by number
     }
 
     @Test
     public void testGetAllTexts()
     {
-        int listSize = 2;
+        int listSize = 3;
         tester.addMessage(messageObject1);
         tester.addMessage(messageObject2);
         tester.addMessage(messageObject3);
         ArrayList<MessageObject> messageList = tester.getAllTexts();
-        assertEquals("Testing Get All Texts: ",listSize,messageList.size());//Tests get all texts.
+        assertEquals("Testing Get All Texts: ",listSize,messageList.size()); //Test get all texts
     }
 }
