@@ -1,5 +1,6 @@
 package com.example.guy.smsclassproject;
 
+import android.os.Looper;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.UiThreadTest;
 import android.test.suitebuilder.annotation.SmallTest;
@@ -29,17 +30,21 @@ public class DraftsActivityTest extends ActivityInstrumentationTestCase2<DraftsA
     }
 
     @Override
+    @UiThreadTest
     public void setUp() throws Exception {
         super.setUp();
-        //DraftsActivity activityMonitor = getInstrumentation().addMonitor(NextActivity.class.getName(), null, false);
+        if (Looper.myLooper() == null)
+        {
+            Looper.prepare();
+        }
         draftsDatabase = new DraftsDatabase();
+        draftsDatabase.clearData();
         messageObject1 = new MessageObject("hi", "5554",null, true);
         messageObject2 = new MessageObject("hi hi", "5555554",null, true);
         messageObject3 = new MessageObject("sup", "5435555554",null, true);
         draftsDatabase.addMessage(messageObject1);
         draftsDatabase.addMessage(messageObject2);
         draftsDatabase.addMessage(messageObject3);
-        messagesToBeDisplayed = draftsDatabase.getAllTexts();
         tester = getActivity();
         messagesToBeDisplayed = tester.messagesToBeDisplayed;
         searchText = (EditText) tester.findViewById(R.id.searchText);
@@ -54,22 +59,18 @@ public class DraftsActivityTest extends ActivityInstrumentationTestCase2<DraftsA
     public void testSearch() {
         searchText.setText("hi");
         searchButton.performClick();
-        messagesToBeDisplayed = tester.messagesToBeDisplayed;
         assertEquals("Messages with the word hi", 2, messagesToBeDisplayed.size());
 
         searchText.setText("sup");
         searchButton.performClick();
-        messagesToBeDisplayed = tester.messagesToBeDisplayed;
         assertEquals("Messages with the word sup", 1, messagesToBeDisplayed.size());
 
         searchText.setText("yo");
         searchButton.performClick();
-        messagesToBeDisplayed = tester.messagesToBeDisplayed;
         assertEquals("Messages with the word yo", 0, messagesToBeDisplayed.size());
 
         searchText.setText("i");
         searchButton.performClick();
-        messagesToBeDisplayed = tester.messagesToBeDisplayed;
         assertEquals("Messages with the word i", 2, messagesToBeDisplayed.size());
 
     }
@@ -79,15 +80,15 @@ public class DraftsActivityTest extends ActivityInstrumentationTestCase2<DraftsA
     public void testRedisplay()
     {
         assertNotNull(tester.draftButtons[0]);
-        draftButtons[0].performClick();
+        tester.draftButtons[0].performClick();
         assertEquals("Size of the list after deletion is 2", 2, messagesToBeDisplayed.size()); //presses the first button, which deletes it from the drafts
 
-        String buttonText0 = draftButtons[0].getText().toString();
+        String buttonText0 = tester.draftButtons[0].getText().toString();
         if(buttonText0.equals("5555554: hi hi"))
             assertSame("Text redisplayed on the first button", buttonText0, messageObject2.toString()); //gets the text of the current button, since the messageobject1 was in draftsButtons0 before, not it should have messageobject2
 
         assertNotNull(tester.draftButtons[1]);
-        String buttonText1 = draftButtons[1].getText().toString();
+        String buttonText1 = tester.draftButtons[1].getText().toString();
         if(buttonText1.equals("5435555554: sup"))
             assertSame("Text redisplayed on the second button", buttonText1, messageObject3.toString());
 
@@ -98,16 +99,16 @@ public class DraftsActivityTest extends ActivityInstrumentationTestCase2<DraftsA
     public void testMessageButtons()
     {
 
-        assertNotNull(tester.draftButtons[1]);
-        draftButtons[1].performClick();
+        assertNotNull(tester.draftButtons[0]);
+        tester.draftButtons[0].performClick();
 
-        assertNotNull(tester.draftButtons[2]);
-        draftButtons[2].performClick();
+        assertNotNull(tester.draftButtons[1]);
+        tester.draftButtons[1].performClick();
 
         assertEquals("The draftsDatabase now only contains 1 message", 1, messagesToBeDisplayed.size());
 
         assertNotNull(tester.draftButtons[0]);
-        draftButtons[0].performClick();
+        tester.draftButtons[0].performClick();
 
         assertNull(draftsDatabase); //after you press all the buttons, the draftsDatabase should be empty because all the messages have been deleted
 

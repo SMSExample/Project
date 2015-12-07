@@ -158,8 +158,11 @@ public class ConversationActivity extends AppCompatActivity {
     private boolean shouldAddMessage(ArrayList<String> numbers, MessageObject messageObject)
     {
         String messageNumber = messageObject.getNumber();
-        if(numbers.contains(messageNumber))
-            return false;
+        for(String number: numbers)
+        {
+            if(Database.isSameNumber(number,messageNumber))
+                return false;
+        }
         numbers.add(messageNumber);
         return true;
     }
@@ -197,4 +200,5 @@ public class ConversationActivity extends AppCompatActivity {
             correspondentButtons[i].setText("");
         }
     }
+
 }
